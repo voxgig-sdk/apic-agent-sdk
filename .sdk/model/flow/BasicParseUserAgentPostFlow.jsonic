@@ -1,0 +1,18 @@
+# BasicParseUserAgentPostFlow
+
+main: kit: flow: BasicParseUserAgentPostFlow:
+{
+  entity: "parse_user_agent_post",
+  kind: "basic",
+  name: "BasicParseUserAgentPostFlow",
+  step: [
+    {
+      input: {
+        ref: "parse_user_agent_post_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicParseUserAgentPostFlow"
+}

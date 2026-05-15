@@ -1,0 +1,28 @@
+# BasicParseUserAgentGetFlow
+
+main: kit: flow: BasicParseUserAgentGetFlow:
+{
+  entity: "parse_user_agent_get",
+  kind: "basic",
+  name: "BasicParseUserAgentGetFlow",
+  step: [
+    {
+      input: {
+        ref: "parse_user_agent_get_ref01",
+        srcdatavar: "parse_user_agent_get_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-parse_user_agent_get_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicParseUserAgentGetFlow"
+}

@@ -1,0 +1,24 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://www.apicagent.com"
+      }
+      description: "Free REST API to detect browser, OS, device from user agent string. Provides easy-to-use API to avoid user-agent parsing libraries."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://api.apicagent.com"
+        }
+      ]
+      termsOfService: "https://www.apicagent.com/terms"
+      title: "APIC Agent"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

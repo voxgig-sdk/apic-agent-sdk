@@ -1,0 +1,67 @@
+<?php
+declare(strict_types=1);
+
+// ApicAgent SDK utility registration
+
+require_once __DIR__ . '/../core/UtilityType.php';
+require_once __DIR__ . '/Clean.php';
+require_once __DIR__ . '/Done.php';
+require_once __DIR__ . '/MakeError.php';
+require_once __DIR__ . '/FeatureAdd.php';
+require_once __DIR__ . '/FeatureHook.php';
+require_once __DIR__ . '/FeatureInit.php';
+require_once __DIR__ . '/Fetcher.php';
+require_once __DIR__ . '/MakeFetchDef.php';
+require_once __DIR__ . '/MakeContext.php';
+require_once __DIR__ . '/MakeOptions.php';
+require_once __DIR__ . '/MakeRequest.php';
+require_once __DIR__ . '/MakeResponse.php';
+require_once __DIR__ . '/MakeResult.php';
+require_once __DIR__ . '/MakePoint.php';
+require_once __DIR__ . '/MakeSpec.php';
+require_once __DIR__ . '/MakeUrl.php';
+require_once __DIR__ . '/Param.php';
+require_once __DIR__ . '/PrepareAuth.php';
+require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/PrepareHeaders.php';
+require_once __DIR__ . '/PrepareMethod.php';
+require_once __DIR__ . '/PrepareParams.php';
+require_once __DIR__ . '/PreparePath.php';
+require_once __DIR__ . '/PrepareQuery.php';
+require_once __DIR__ . '/ResultBasic.php';
+require_once __DIR__ . '/ResultBody.php';
+require_once __DIR__ . '/ResultHeaders.php';
+require_once __DIR__ . '/TransformRequest.php';
+require_once __DIR__ . '/TransformResponse.php';
+
+ApicAgentUtility::setRegistrar(function (ApicAgentUtility $u): void {
+    $u->clean = [ApicAgentClean::class, 'call'];
+    $u->done = [ApicAgentDone::class, 'call'];
+    $u->make_error = [ApicAgentMakeError::class, 'call'];
+    $u->feature_add = [ApicAgentFeatureAdd::class, 'call'];
+    $u->feature_hook = [ApicAgentFeatureHook::class, 'call'];
+    $u->feature_init = [ApicAgentFeatureInit::class, 'call'];
+    $u->fetcher = [ApicAgentFetcher::class, 'call'];
+    $u->make_fetch_def = [ApicAgentMakeFetchDef::class, 'call'];
+    $u->make_context = [ApicAgentMakeContext::class, 'call'];
+    $u->make_options = [ApicAgentMakeOptions::class, 'call'];
+    $u->make_request = [ApicAgentMakeRequest::class, 'call'];
+    $u->make_response = [ApicAgentMakeResponse::class, 'call'];
+    $u->make_result = [ApicAgentMakeResult::class, 'call'];
+    $u->make_point = [ApicAgentMakePoint::class, 'call'];
+    $u->make_spec = [ApicAgentMakeSpec::class, 'call'];
+    $u->make_url = [ApicAgentMakeUrl::class, 'call'];
+    $u->param = [ApicAgentParam::class, 'call'];
+    $u->prepare_auth = [ApicAgentPrepareAuth::class, 'call'];
+    $u->prepare_body = [ApicAgentPrepareBody::class, 'call'];
+    $u->prepare_headers = [ApicAgentPrepareHeaders::class, 'call'];
+    $u->prepare_method = [ApicAgentPrepareMethod::class, 'call'];
+    $u->prepare_params = [ApicAgentPrepareParams::class, 'call'];
+    $u->prepare_path = [ApicAgentPreparePath::class, 'call'];
+    $u->prepare_query = [ApicAgentPrepareQuery::class, 'call'];
+    $u->result_basic = [ApicAgentResultBasic::class, 'call'];
+    $u->result_body = [ApicAgentResultBody::class, 'call'];
+    $u->result_headers = [ApicAgentResultHeaders::class, 'call'];
+    $u->transform_request = [ApicAgentTransformRequest::class, 'call'];
+    $u->transform_response = [ApicAgentTransformResponse::class, 'call'];
+});

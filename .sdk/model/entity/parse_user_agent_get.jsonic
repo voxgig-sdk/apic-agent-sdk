@@ -1,0 +1,71 @@
+# Entity: parse_user_agent_get
+
+main: kit: entity: parse_user_agent_get: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "browser_family"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "client"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "device"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "os"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "os_family"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "parse_user_agent_get"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"
+                kind: "query"
+                name: "ua"
+                orig: "ua"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/"
+          select: {
+            exist: [
+              "ua"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

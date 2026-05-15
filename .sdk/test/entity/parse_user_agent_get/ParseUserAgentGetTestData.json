@@ -1,0 +1,38 @@
+{
+  "existing": {
+    "parse_user_agent_get": {
+      "PARSE_USER_AGENT_GET00": {
+        "browser_family": "s32",
+        "client": {},
+        "device": {},
+        "os": {},
+        "os_family": "s36"
+      },
+      "PARSE_USER_AGENT_GET01": {
+        "browser_family": "s64",
+        "client": {},
+        "device": {},
+        "os": {},
+        "os_family": "s68"
+      },
+      "PARSE_USER_AGENT_GET02": {
+        "browser_family": "s96",
+        "client": {},
+        "device": {},
+        "os": {},
+        "os_family": "s9a"
+      }
+    }
+  },
+  "new": {
+    "parse_user_agent_get": {
+      "parse_user_agent_get_ref01": {
+        "browser_family": "sc8",
+        "client": {},
+        "device": {},
+        "os": {},
+        "os_family": "scc"
+      }
+    }
+  }
+}

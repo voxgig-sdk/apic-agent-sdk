@@ -1,0 +1,242 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "APIC Agent",
+    "description": "Free REST API to detect browser, OS, device from user agent string. Provides easy-to-use API to avoid user-agent parsing libraries.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://www.apicagent.com"
+    },
+    "termsOfService": "https://www.apicagent.com/terms"
+  },
+  "servers": [
+    {
+      "url": "https://api.apicagent.com",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Parse user agent string (GET)",
+        "description": "Accepts user agent string in query parameter and returns parsed data including browser, OS, and device information.",
+        "operationId": "parseUserAgentGet",
+        "parameters": [
+          {
+            "name": "ua",
+            "in": "query",
+            "description": "User agent string in URL encoded format",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully parsed user agent string",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserAgentResponse"
+                },
+                "example": {
+                  "browser_family": "Chrome",
+                  "client": {
+                    "engine": "Blink",
+                    "engine_version": "unknown",
+                    "name": "Chrome",
+                    "type": "browser",
+                    "version": "89.0.4389.114"
+                  },
+                  "device": {
+                    "brand": "Apple",
+                    "model": "unknown",
+                    "type": "desktop"
+                  },
+                  "os": {
+                    "name": "Mac",
+                    "platform": "unknown",
+                    "version": "10.15.5"
+                  },
+                  "os_family": "Mac"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid or missing user agent parameter"
+          }
+        }
+      },
+      "post": {
+        "summary": "Parse user agent string (POST)",
+        "description": "Accepts user agent string in JSON request body and returns parsed data including browser, OS, and device information.",
+        "operationId": "parseUserAgentPost",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserAgentRequest"
+              },
+              "example": {
+                "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully parsed user agent string",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserAgentResponse"
+                },
+                "example": {
+                  "browser_family": "Chrome",
+                  "client": {
+                    "engine": "Blink",
+                    "engine_version": "unknown",
+                    "name": "Chrome",
+                    "type": "browser",
+                    "version": "89.0.4389.114"
+                  },
+                  "device": {
+                    "brand": "Apple",
+                    "model": "unknown",
+                    "type": "desktop"
+                  },
+                  "os": {
+                    "name": "Mac",
+                    "platform": "unknown",
+                    "version": "10.15.5"
+                  },
+                  "os_family": "Mac"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid or missing user agent in request body"
+          },
+          "415": {
+            "description": "Unsupported Media Type - Content-Type must be application/json"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "UserAgentRequest": {
+        "type": "object",
+        "required": [
+          "ua"
+        ],
+        "properties": {
+          "ua": {
+            "type": "string",
+            "description": "User agent string to be parsed"
+          }
+        }
+      },
+      "UserAgentResponse": {
+        "type": "object",
+        "properties": {
+          "browser_family": {
+            "type": "string",
+            "description": "Browser family name",
+            "example": "Chrome"
+          },
+          "client": {
+            "$ref": "#/components/schemas/ClientInfo"
+          },
+          "device": {
+            "$ref": "#/components/schemas/DeviceInfo"
+          },
+          "os": {
+            "$ref": "#/components/schemas/OSInfo"
+          },
+          "os_family": {
+            "type": "string",
+            "description": "Operating system family name",
+            "example": "Mac"
+          }
+        }
+      },
+      "ClientInfo": {
+        "type": "object",
+        "properties": {
+          "engine": {
+            "type": "string",
+            "description": "Browser rendering engine",
+            "example": "Blink"
+          },
+          "engine_version": {
+            "type": "string",
+            "description": "Browser rendering engine version",
+            "example": "unknown"
+          },
+          "name": {
+            "type": "string",
+            "description": "Browser name",
+            "example": "Chrome"
+          },
+          "type": {
+            "type": "string",
+            "description": "Client type",
+            "example": "browser"
+          },
+          "version": {
+            "type": "string",
+            "description": "Browser version",
+            "example": "89.0.4389.114"
+          }
+        }
+      },
+      "DeviceInfo": {
+        "type": "object",
+        "properties": {
+          "brand": {
+            "type": "string",
+            "description": "Device brand/manufacturer",
+            "example": "Apple"
+          },
+          "model": {
+            "type": "string",
+            "description": "Device model",
+            "example": "unknown"
+          },
+          "type": {
+            "type": "string",
+            "description": "Device type (e.g., desktop, mobile, tablet)",
+            "example": "desktop"
+          }
+        }
+      },
+      "OSInfo": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Operating system name",
+            "example": "Mac"
+          },
+          "platform": {
+            "type": "string",
+            "description": "Operating system platform",
+            "example": "unknown"
+          },
+          "version": {
+            "type": "string",
+            "description": "Operating system version",
+            "example": "10.15.5"
+          }
+        }
+      }
+    }
+  }
+}

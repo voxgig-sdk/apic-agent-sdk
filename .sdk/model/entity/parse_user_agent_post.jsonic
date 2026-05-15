@@ -1,0 +1,59 @@
+# Entity: parse_user_agent_post
+
+main: kit: entity: parse_user_agent_post: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "browser_family"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "client"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "device"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "os"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "os_family"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "ua"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "parse_user_agent_post"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/"
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,42 @@
+{
+  "existing": {
+    "parse_user_agent_post": {
+      "PARSE_USER_AGENT_POST00": {
+        "browser_family": "s3c",
+        "client": {},
+        "device": {},
+        "os": {},
+        "os_family": "s40",
+        "ua": "s41"
+      },
+      "PARSE_USER_AGENT_POST01": {
+        "browser_family": "s78",
+        "client": {},
+        "device": {},
+        "os": {},
+        "os_family": "s7c",
+        "ua": "s7d"
+      },
+      "PARSE_USER_AGENT_POST02": {
+        "browser_family": "sb4",
+        "client": {},
+        "device": {},
+        "os": {},
+        "os_family": "sb8",
+        "ua": "sb9"
+      }
+    }
+  },
+  "new": {
+    "parse_user_agent_post": {
+      "parse_user_agent_post_ref01": {
+        "browser_family": "sf0",
+        "client": {},
+        "device": {},
+        "os": {},
+        "os_family": "sf4",
+        "ua": "sf5"
+      }
+    }
+  }
+}
