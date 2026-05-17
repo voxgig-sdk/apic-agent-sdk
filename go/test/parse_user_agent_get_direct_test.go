@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/apic-agent-sdk"
-	"github.com/voxgig-sdk/apic-agent-sdk/core"
+	sdk "github.com/voxgig-sdk/apic-agent-sdk/go"
+	"github.com/voxgig-sdk/apic-agent-sdk/go/core"
 )
 
 func TestParseUserAgentGetDirect(t *testing.T) {

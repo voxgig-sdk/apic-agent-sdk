@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/apic-agent-sdk"
+	sdk "github.com/voxgig-sdk/apic-agent-sdk/go"
 )
 
 func TestExists(t *testing.T) {

@@ -6,21 +6,24 @@
         "client": {},
         "device": {},
         "os": {},
-        "os_family": "s36"
+        "os_family": "s36",
+        "id": "PARSE_USER_AGENT_GET00"
       },
       "PARSE_USER_AGENT_GET01": {
         "browser_family": "s64",
         "client": {},
         "device": {},
         "os": {},
-        "os_family": "s68"
+        "os_family": "s68",
+        "id": "PARSE_USER_AGENT_GET01"
       },
       "PARSE_USER_AGENT_GET02": {
         "browser_family": "s96",
         "client": {},
         "device": {},
         "os": {},
-        "os_family": "s9a"
+        "os_family": "s9a",
+        "id": "PARSE_USER_AGENT_GET02"
       }
     }
   },

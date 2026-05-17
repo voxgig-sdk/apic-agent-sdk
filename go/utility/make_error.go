@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/apic-agent-sdk/core"
+import "github.com/voxgig-sdk/apic-agent-sdk/go/core"
 
 func makeErrorUtil(ctx *core.Context, err error) (any, error) {
 	if ctx == nil {

@@ -7,7 +7,8 @@
         "device": {},
         "os": {},
         "os_family": "s40",
-        "ua": "s41"
+        "ua": "s41",
+        "id": "PARSE_USER_AGENT_POST00"
       },
       "PARSE_USER_AGENT_POST01": {
         "browser_family": "s78",
@@ -15,7 +16,8 @@
         "device": {},
         "os": {},
         "os_family": "s7c",
-        "ua": "s7d"
+        "ua": "s7d",
+        "id": "PARSE_USER_AGENT_POST01"
       },
       "PARSE_USER_AGENT_POST02": {
         "browser_family": "sb4",
@@ -23,7 +25,8 @@
         "device": {},
         "os": {},
         "os_family": "sb8",
-        "ua": "sb9"
+        "ua": "sb9",
+        "id": "PARSE_USER_AGENT_POST02"
       }
     }
   },

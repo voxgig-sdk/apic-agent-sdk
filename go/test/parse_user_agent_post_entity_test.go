@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/apic-agent-sdk"
-	"github.com/voxgig-sdk/apic-agent-sdk/core"
+	sdk "github.com/voxgig-sdk/apic-agent-sdk/go"
+	"github.com/voxgig-sdk/apic-agent-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/apic-agent-sdk/go/utility/struct"
 )
 
 func TestParseUserAgentPostEntity(t *testing.T) {

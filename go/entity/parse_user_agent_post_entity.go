@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/apic-agent-sdk/core"
+	"github.com/voxgig-sdk/apic-agent-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/apic-agent-sdk/go/utility/struct"
 )
 
 type ParseUserAgentPostEntity struct {
