@@ -105,14 +105,12 @@ func parse_user_agent_getDirectSetup(mockres any) *parse_user_agent_getDirectSet
 	env := envOverride(map[string]any{
 		"APICAGENT_TEST_PARSE_USER_AGENT_GET_ENTID": map[string]any{},
 		"APICAGENT_TEST_LIVE":    "FALSE",
-		"APICAGENT_APIKEY":       "NONE",
 	})
 
 	live := env["APICAGENT_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["APICAGENT_APIKEY"],
 		}
 		client := sdk.NewApicAgentSDK(mergedOpts)
 

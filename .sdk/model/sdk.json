@@ -17,7 +17,16 @@
         ],
         "termsOfService": "https://www.apicagent.com/terms",
         "title": "APIC Agent",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "tagline": "Parse a User-Agent string into structured browser, OS, and device fields via a single REST call",
+        "homepage": "https://www.apicagent.com",
+        "docs_url": "https://www.apicagent.com/docs",
+        "about_md": "APIC Agent is a free REST API run by [APIC Labs](https://www.apicagent.com) that turns a raw `User-Agent` header into structured browser, operating system, and device data. It is built on top of the open-source [Device Detector](https://github.com/matomo-org/device-detector) library, so you can avoid bundling and updating UA-parsing code in your own application.\n\nThe API exposes a single endpoint at `https://api.apicagent.com` that accepts a UA string and returns a JSON object. Typical fields include:\n\n- `browser_family` — high-level browser name\n- `client` — `name`, `type`, `version`, `engine`, `engine_version`\n- `os` — `name`, `version`, `platform`\n- `os_family` — OS classification\n- `device` — `brand`, `model`, `type`\n\nYou can call it either as `GET https://api.apicagent.com/?ua=<encoded-ua>` or as `POST https://api.apicagent.com` with a JSON body `{\"ua\": \"<ua-string>\"}`. The documentation does not list authentication requirements or published rate limits.",
+        "entity_desc": {
+          "parse_user_agent_get": "Parse a User-Agent string via `GET /?ua=<user-agent>` and receive the detected browser, OS, and device as JSON.",
+          "parse_user_agent_post": "Parse a User-Agent string via `POST /` with a JSON body `{\"ua\": \"<user-agent>\"}`, returning the same browser, OS, and device fields."
+        },
+        "auth": false
       },
       "config": {
         "auth": {
@@ -25,7 +34,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "parse_user_agent_get": {

@@ -67,14 +67,12 @@ def parse_user_agent_get_direct_setup(mockres)
   env = Runner.env_override({
     "APICAGENT_TEST_PARSE_USER_AGENT_GET_ENTID" => {},
     "APICAGENT_TEST_LIVE" => "FALSE",
-    "APICAGENT_APIKEY" => "NONE",
   })
 
   live = env["APICAGENT_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
-      "apikey" => env["APICAGENT_APIKEY"],
     }
     client = ApicAgentSDK.new(merged_opts)
     return {

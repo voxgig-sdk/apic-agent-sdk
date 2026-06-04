@@ -15,9 +15,6 @@ def make_config():
         },
         "options": {
             "base": "https://api.apicagent.com",
-            "auth": {
-                "prefix": "Bearer",
-            },
             "headers": {
         "content-type": "application/json",
       },

@@ -77,7 +77,6 @@ def parse_user_agent_post_basic_setup(extra)
     "APICAGENT_TEST_PARSE_USER_AGENT_POST_ENTID" => idmap,
     "APICAGENT_TEST_LIVE" => "FALSE",
     "APICAGENT_TEST_EXPLAIN" => "FALSE",
-    "APICAGENT_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -89,7 +88,6 @@ def parse_user_agent_post_basic_setup(extra)
   if env["APICAGENT_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["APICAGENT_APIKEY"],
       },
       extra || {},
     ])

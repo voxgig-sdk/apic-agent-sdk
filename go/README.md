@@ -28,16 +28,13 @@ package main
 
 import (
     "fmt"
-    "os"
 
     sdk "github.com/voxgig-sdk/apic-agent-sdk/go"
     "github.com/voxgig-sdk/apic-agent-sdk/go/core"
 )
 
 func main() {
-    client := sdk.NewApicAgentSDK(map[string]any{
-        "apikey": os.Getenv("APIC-AGENT_APIKEY"),
-    })
+    client := sdk.NewApicAgentSDK(map[string]any{})
 ```
 
 ### 3. Load a parseuseragentget
@@ -140,7 +137,6 @@ Create a `.env.local` file at the project root:
 
 ```
 APIC-AGENT_TEST_LIVE=TRUE
-APIC-AGENT_APIKEY=<your-key>
 ```
 
 Then run:
@@ -162,7 +158,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `"apikey"` | `string` | API key for authentication. |
 | `"base"` | `string` | Base URL of the API server. |
 | `"prefix"` | `string` | URL path prefix prepended to all requests. |
 | `"suffix"` | `string` | URL path suffix appended to all requests. |
