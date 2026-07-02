@@ -91,6 +91,7 @@ def _parse_user_agent_get_basic_setup(extra):
         "APICAGENT_TEST_PARSE_USER_AGENT_GET_ENTID": idmap,
         "APICAGENT_TEST_LIVE": "FALSE",
         "APICAGENT_TEST_EXPLAIN": "FALSE",
+        "APICAGENT_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -101,6 +102,7 @@ def _parse_user_agent_get_basic_setup(extra):
     if env.get("APICAGENT_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("APICAGENT_APIKEY"),
             },
             extra or {},
         ])

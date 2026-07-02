@@ -117,6 +117,7 @@ func parse_user_agent_getBasicSetup(extra map[string]any) *entityTestSetup {
 		"APICAGENT_TEST_PARSE_USER_AGENT_GET_ENTID": idmap,
 		"APICAGENT_TEST_LIVE":      "FALSE",
 		"APICAGENT_TEST_EXPLAIN":   "FALSE",
+		"APICAGENT_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["APICAGENT_TEST_PARSE_USER_AGENT_GET_ENTID"])
@@ -127,6 +128,7 @@ func parse_user_agent_getBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["APICAGENT_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["APICAGENT_APIKEY"],
 			},
 			extra,
 		})

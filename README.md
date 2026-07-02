@@ -1,22 +1,8 @@
 # ApicAgent SDK
 
-Parse a User-Agent string into structured browser, OS, and device fields via a single REST call
+APIC Agent client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About APIC Agent
-
-APIC Agent is a free REST API run by [APIC Labs](https://www.apicagent.com) that turns a raw `User-Agent` header into structured browser, operating system, and device data. It is built on top of the open-source [Device Detector](https://github.com/matomo-org/device-detector) library, so you can avoid bundling and updating UA-parsing code in your own application.
-
-The API exposes a single endpoint at `https://api.apicagent.com` that accepts a UA string and returns a JSON object. Typical fields include:
-
-- `browser_family` — high-level browser name
-- `client` — `name`, `type`, `version`, `engine`, `engine_version`
-- `os` — `name`, `version`, `platform`
-- `os_family` — OS classification
-- `device` — `brand`, `model`, `type`
-
-You can call it either as `GET https://api.apicagent.com/?ua=<encoded-ua>` or as `POST https://api.apicagent.com` with a JSON body `{"ua": "<ua-string>"}`. The documentation does not list authentication requirements or published rate limits.
 
 ## Try it
 
@@ -50,27 +36,31 @@ gem install apic-agent-sdk
 luarocks install apic-agent-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { ApicAgentSDK } from 'apic-agent'
 
-const client = new ApicAgentSDK({})
+const client = new ApicAgentSDK({
+  apikey: process.env.APIC-AGENT_APIKEY,
+})
 
+// Load parseuseragentget data
+const parseuseragentget = await client.ParseUserAgentGet().load({})
+console.log(parseuseragentget.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -100,8 +90,8 @@ The API exposes 2 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **ParseUserAgentGet** | Parse a User-Agent string via `GET /?ua=<user-agent>` and receive the detected browser, OS, and device as JSON. | `/` |
-| **ParseUserAgentPost** | Parse a User-Agent string via `POST /` with a JSON body `{"ua": "<user-agent>"}`, returning the same browser, OS, and device fields. | `/` |
+| **ParseUserAgentGet** |  | `/` |
+| **ParseUserAgentPost** |  | `/` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -111,15 +101,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from apicagent_sdk import ApicAgentSDK
 
-client = ApicAgentSDK({})
+client = ApicAgentSDK({
+    "apikey": os.environ.get("APIC-AGENT_APIKEY"),
+})
 
 
 # Load a specific parseuseragentget
-parseuseragentget, err = client.ParseUserAgentGet(None).load(
-    {"id": "example_id"}, None
-)
+parseuseragentget, err = client.ParseUserAgentGet().load({"id": "example_id"})
+print(parseuseragentget)
 ```
 
 ### PHP
@@ -128,13 +120,14 @@ parseuseragentget, err = client.ParseUserAgentGet(None).load(
 <?php
 require_once 'apicagent_sdk.php';
 
-$client = new ApicAgentSDK([]);
+$client = new ApicAgentSDK([
+    "apikey" => getenv("APIC-AGENT_APIKEY"),
+]);
 
 
 // Load a specific parseuseragentget
-[$parseuseragentget, $err] = $client->ParseUserAgentGet(null)->load(
-    ["id" => "example_id"], null
-);
+[$parseuseragentget, $err] = $client->ParseUserAgentGet()->load(["id" => "example_id"]);
+print_r($parseuseragentget);
 ```
 
 ### Golang
@@ -142,8 +135,13 @@ $client = new ApicAgentSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/apic-agent-sdk/go"
 
-client := sdk.NewApicAgentSDK(map[string]any{})
+client := sdk.NewApicAgentSDK(map[string]any{
+    "apikey": os.Getenv("APIC-AGENT_APIKEY"),
+})
 
+// Load parseuseragentget data
+parseuseragentget, err := client.ParseUserAgentGet(nil).Load(map[string]any{}, nil)
+fmt.Println(parseuseragentget)
 ```
 
 ### Ruby
@@ -151,13 +149,14 @@ client := sdk.NewApicAgentSDK(map[string]any{})
 ```ruby
 require_relative "ApicAgent_sdk"
 
-client = ApicAgentSDK.new({})
+client = ApicAgentSDK.new({
+  "apikey" => ENV["APIC-AGENT_APIKEY"],
+})
 
 
 # Load a specific parseuseragentget
-parseuseragentget, err = client.ParseUserAgentGet(nil).load(
-  { "id" => "example_id" }, nil
-)
+parseuseragentget, err = client.ParseUserAgentGet().load({ "id" => "example_id" })
+puts parseuseragentget
 ```
 
 ### Lua
@@ -165,13 +164,14 @@ parseuseragentget, err = client.ParseUserAgentGet(nil).load(
 ```lua
 local sdk = require("apic-agent_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("APIC-AGENT_APIKEY"),
+})
 
 
 -- Load a specific parseuseragentget
-local parseuseragentget, err = client:ParseUserAgentGet(nil):load(
-  { id = "example_id" }, nil
-)
+local parseuseragentget, err = client:ParseUserAgentGet():load({ id = "example_id" })
+print(parseuseragentget)
 ```
 
 ## Unit testing in offline mode
@@ -190,25 +190,21 @@ const result = await client.ParseUserAgentGet().load({ id: 'test01' })
 ### Python
 
 ```python
-client = ApicAgentSDK.test(None, None)
-result, err = client.ParseUserAgentGet(None).load(
-    {"id": "test01"}, None
-)
+client = ApicAgentSDK.test()
+result, err = client.ParseUserAgentGet().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = ApicAgentSDK::test(null, null);
-[$result, $err] = $client->ParseUserAgentGet(null)->load(
-    ["id" => "test01"], null
-);
+$client = ApicAgentSDK::test();
+[$result, $err] = $client->ParseUserAgentGet()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.ParseUserAgentGet(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -217,19 +213,15 @@ result, err := client.ParseUserAgentGet(nil).Load(
 ### Ruby
 
 ```ruby
-client = ApicAgentSDK.test(nil, nil)
-result, err = client.ParseUserAgentGet(nil).load(
-  { "id" => "test01" }, nil
-)
+client = ApicAgentSDK.test
+result, err = client.ParseUserAgentGet().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:ParseUserAgentGet(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:ParseUserAgentGet():load({ id = "test01" })
 ```
 
 ## How it works
@@ -333,11 +325,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the APIC Agent
-
-- Upstream: [https://www.apicagent.com](https://www.apicagent.com)
-- API docs: [https://www.apicagent.com/docs](https://www.apicagent.com/docs)
 
 ---
 

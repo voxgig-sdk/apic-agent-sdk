@@ -30,12 +30,12 @@ Create a new SDK client instance.
 
 ### Static Methods
 
-#### `sdk.test(testopts, sdkopts)`
+#### `sdk.test(testopts?, sdkopts?)`
 
-Create a test client with mock features active. Both arguments may be `nil`.
+Create a test client with mock features active. Both arguments are optional.
 
 ```lua
-local client = sdk.test(nil, nil)
+local client = sdk.test()
 ```
 
 
@@ -108,7 +108,7 @@ local parse_user_agent_get = client:ParseUserAgentGet(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ParseUserAgentGet(nil):load({ id = "parse_user_agent_get_id" }, nil)
+local result, err = client:ParseUserAgentGet():load({ id = "parse_user_agent_get_id" })
 ```
 
 ### Common Methods
@@ -165,9 +165,9 @@ local parse_user_agent_post = client:ParseUserAgentPost(nil)
 Create a new entity with the given data.
 
 ```lua
-local result, err = client:ParseUserAgentPost(nil):create({
+local result, err = client:ParseUserAgentPost():create({
   ua = --[[ `$STRING` ]],
-}, nil)
+})
 ```
 
 ### Common Methods

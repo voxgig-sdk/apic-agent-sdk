@@ -113,6 +113,7 @@ function basicSetup(extra?: any) {
     'APIC_AGENT_TEST_PARSE_USER_AGENT_GET_ENTID': idmap,
     'APIC_AGENT_TEST_LIVE': 'FALSE',
     'APIC_AGENT_TEST_EXPLAIN': 'FALSE',
+    'APIC_AGENT_APIKEY': 'NONE',
   })
 
   idmap = env['APIC_AGENT_TEST_PARSE_USER_AGENT_GET_ENTID']
@@ -122,6 +123,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new ApicAgentSDK(merge([
       {
+        apikey: env.APIC_AGENT_APIKEY,
       },
       extra
     ]))
