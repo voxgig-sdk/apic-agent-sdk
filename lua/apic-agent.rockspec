@@ -8,12 +8,14 @@ source = {
   dir = "apic-agent-sdk/lua"
 }
 description = {
-  summary = "ApicAgent SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the APIC Agent public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/apic-agent-sdk",
+  issues_url = "https://github.com/voxgig-sdk/apic-agent-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "apic-agent" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

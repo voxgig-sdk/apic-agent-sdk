@@ -10,7 +10,7 @@ The TypeScript SDK for the ApicAgent API — a type-safe, entity-oriented client
 
 ## Install
 ```bash
-npm install apic-agent
+npm install @voxgig-sdk/apic-agent
 ```
 ## Tutorial: your first API call
 

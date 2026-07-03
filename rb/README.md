@@ -10,13 +10,13 @@ The Ruby SDK for the ApicAgent API — an entity-oriented client using idiomatic
 
 ## Install
 ```bash
-gem install apic-agent-sdk
+gem install voxgig-sdk-apic-agent
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "apic-agent-sdk"
+gem "voxgig-sdk-apic-agent"
 ```
 
 Then run:

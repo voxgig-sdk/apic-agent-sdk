@@ -10,7 +10,7 @@ The Lua SDK for the ApicAgent API — an entity-oriented client using Lua conven
 
 ## Install
 ```bash
-luarocks install apic-agent-sdk
+luarocks install voxgig-sdk-apic-agent
 ```
 
 If the module is not yet published, add the source directory to

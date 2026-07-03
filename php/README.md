@@ -10,7 +10,7 @@ The PHP SDK for the ApicAgent API — an entity-oriented client using PHP conven
 
 ## Install
 ```bash
-composer require voxgig/apic-agent-sdk
+composer require voxgig-sdk/apic-agent
 ```
 
 

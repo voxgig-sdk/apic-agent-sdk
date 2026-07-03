@@ -10,7 +10,7 @@ The Python SDK for the ApicAgent API — an entity-oriented client following Pyt
 
 ## Install
 ```bash
-pip install apic-agent-sdk
+pip install voxgig-sdk-apic-agent
 ```
 
 Or install from source:
