@@ -233,10 +233,10 @@ class ApicAgentSDK
 
     private $_parse_user_agent_get = null;
 
-    // Idiomatic facade: $client->parse_user_agent_get()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias ParseUserAgentGet() (PHP method
-    // names are case-insensitive).
-    public function parse_user_agent_get($data = null)
+    // Canonical facade: $client->ParseUserAgentGet()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->parse_user_agent_get()
+    // resolves here too.
+    public function ParseUserAgentGet($data = null)
     {
         require_once __DIR__ . '/entity/parse_user_agent_get_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class ApicAgentSDK
 
     private $_parse_user_agent_post = null;
 
-    // Idiomatic facade: $client->parse_user_agent_post()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias ParseUserAgentPost() (PHP method
-    // names are case-insensitive).
-    public function parse_user_agent_post($data = null)
+    // Canonical facade: $client->ParseUserAgentPost()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->parse_user_agent_post()
+    // resolves here too.
+    public function ParseUserAgentPost($data = null)
     {
         require_once __DIR__ . '/entity/parse_user_agent_post_entity.php';
         if ($data === null) {

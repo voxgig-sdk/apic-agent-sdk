@@ -4,47 +4,50 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class ParseUserAgentGet:
-    browser_family: Optional[str] = None
-    client: Optional[dict] = None
-    device: Optional[dict] = None
-    os: Optional[dict] = None
-    os_family: Optional[str] = None
+class ParseUserAgentGet(TypedDict, total=False):
+    browser_family: str
+    client: dict
+    device: dict
+    os: dict
+    os_family: str
 
 
-@dataclass
-class ParseUserAgentGetLoadMatch:
-    browser_family: Optional[str] = None
-    client: Optional[dict] = None
-    device: Optional[dict] = None
-    os: Optional[dict] = None
-    os_family: Optional[str] = None
+class ParseUserAgentGetLoadMatch(TypedDict, total=False):
+    browser_family: str
+    client: dict
+    device: dict
+    os: dict
+    os_family: str
 
 
-@dataclass
-class ParseUserAgentPost:
+class ParseUserAgentPostRequired(TypedDict):
     ua: str
-    browser_family: Optional[str] = None
-    client: Optional[dict] = None
-    device: Optional[dict] = None
-    os: Optional[dict] = None
-    os_family: Optional[str] = None
 
 
-@dataclass
-class ParseUserAgentPostCreateData:
-    browser_family: Optional[str] = None
-    client: Optional[dict] = None
-    device: Optional[dict] = None
-    os: Optional[dict] = None
-    os_family: Optional[str] = None
-    ua: Optional[str] = None
+class ParseUserAgentPost(ParseUserAgentPostRequired, total=False):
+    browser_family: str
+    client: dict
+    device: dict
+    os: dict
+    os_family: str
 
+
+class ParseUserAgentPostCreateData(TypedDict, total=False):
+    browser_family: str
+    client: dict
+    device: dict
+    os: dict
+    os_family: str
+    ua: str

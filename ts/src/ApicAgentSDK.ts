@@ -205,28 +205,14 @@ class ApicAgentSDK {
 
 
 
-  _parse_user_agent_get?: ParseUserAgentGetEntity
-
-  // Idiomatic facade: `client.parse_user_agent_get.list()` / `client.parse_user_agent_get.load({ id })`.
-  get parse_user_agent_get(): ParseUserAgentGetEntity {
-    return (this._parse_user_agent_get ??= new ParseUserAgentGetEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.parse_user_agent_get` instead. */
+  // Entity access: `client.ParseUserAgentGet().list()` / `client.ParseUserAgentGet().load({ id })`.
   ParseUserAgentGet(data?: any) {
     const self = this
     return new ParseUserAgentGetEntity(self,data)
   }
 
 
-  _parse_user_agent_post?: ParseUserAgentPostEntity
-
-  // Idiomatic facade: `client.parse_user_agent_post.list()` / `client.parse_user_agent_post.load({ id })`.
-  get parse_user_agent_post(): ParseUserAgentPostEntity {
-    return (this._parse_user_agent_post ??= new ParseUserAgentPostEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.parse_user_agent_post` instead. */
+  // Entity access: `client.ParseUserAgentPost().list()` / `client.ParseUserAgentPost().load({ id })`.
   ParseUserAgentPost(data?: any) {
     const self = this
     return new ParseUserAgentPostEntity(self,data)

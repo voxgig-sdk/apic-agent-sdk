@@ -33,10 +33,12 @@ client = ApicAgentSDK()
 
 ### 3. Load a parseuseragentget
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.parseuseragentget.load({"id": "example_id"})
-    print(result)
+    parseuseragentget = client.ParseUserAgentGet().load({"id": "example_id"})
+    print(parseuseragentget)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -84,8 +86,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = ApicAgentSDK.test()
 
-result = client.parseuseragentget.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+parseuseragentget = client.ParseUserAgentGet().load({"id": "test01"})
+# parseuseragentget contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -238,7 +241,7 @@ API path: `/`
 
 ### ParseUserAgentGet
 
-Create an instance: `const parse_user_agent_get = client.parse_user_agent_get`
+Create an instance: `parse_user_agent_get = client.ParseUserAgentGet()`
 
 #### Operations
 
@@ -258,14 +261,14 @@ Create an instance: `const parse_user_agent_get = client.parse_user_agent_get`
 
 #### Example: Load
 
-```ts
-const parse_user_agent_get = await client.parse_user_agent_get.load({ id: 'parse_user_agent_get_id' })
+```python
+parse_user_agent_get = client.ParseUserAgentGet().load({"id": "parse_user_agent_get_id"})
 ```
 
 
 ### ParseUserAgentPost
 
-Create an instance: `const parse_user_agent_post = client.parse_user_agent_post`
+Create an instance: `parse_user_agent_post = client.ParseUserAgentPost()`
 
 #### Operations
 
@@ -286,9 +289,9 @@ Create an instance: `const parse_user_agent_post = client.parse_user_agent_post`
 
 #### Example: Create
 
-```ts
-const parse_user_agent_post = await client.parse_user_agent_post.create({
-  ua: /* `$STRING` */,
+```python
+parse_user_agent_post = client.ParseUserAgentPost().create({
+    "ua": ...,  # `$STRING`
 })
 ```
 
@@ -363,7 +366,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-parseuseragentget = client.parseuseragentget
+parseuseragentget = client.ParseUserAgentGet()
 parseuseragentget.load({"id": "example_id"})
 
 # parseuseragentget.data_get() now returns the loaded parseuseragentget data

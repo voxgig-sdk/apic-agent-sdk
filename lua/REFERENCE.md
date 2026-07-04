@@ -87,7 +87,7 @@ same parameters as `direct()`.
 ## ParseUserAgentGetEntity
 
 ```lua
-local parse_user_agent_get = client:parse_user_agent_get(nil)
+local parse_user_agent_get = client:ParseUserAgentGet(nil)
 ```
 
 ### Fields
@@ -107,7 +107,7 @@ local parse_user_agent_get = client:parse_user_agent_get(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:parse_user_agent_get():load({ id = "parse_user_agent_get_id" })
+local result, err = client:ParseUserAgentGet():load({ id = "parse_user_agent_get_id" })
 ```
 
 ### Common Methods
@@ -143,7 +143,7 @@ Return the entity name.
 ## ParseUserAgentPostEntity
 
 ```lua
-local parse_user_agent_post = client:parse_user_agent_post(nil)
+local parse_user_agent_post = client:ParseUserAgentPost(nil)
 ```
 
 ### Fields
@@ -164,7 +164,7 @@ local parse_user_agent_post = client:parse_user_agent_post(nil)
 Create a new entity with the given data.
 
 ```lua
-local result, err = client:parse_user_agent_post():create({
+local result, err = client:ParseUserAgentPost():create({
   ua = --[[ `$STRING` ]],
 })
 ```

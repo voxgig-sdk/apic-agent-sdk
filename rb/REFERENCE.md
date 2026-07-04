@@ -90,7 +90,7 @@ same parameters as `direct()`. Raises on error.
 ## ParseUserAgentGetEntity
 
 ```ruby
-parse_user_agent_get = client.parse_user_agent_get
+parse_user_agent_get = client.ParseUserAgentGet
 ```
 
 ### Fields
@@ -110,7 +110,7 @@ parse_user_agent_get = client.parse_user_agent_get
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.parse_user_agent_get.load({ "id" => "parse_user_agent_get_id" })
+result = client.ParseUserAgentGet.load({ "id" => "parse_user_agent_get_id" })
 ```
 
 ### Common Methods
@@ -146,7 +146,7 @@ Return the entity name.
 ## ParseUserAgentPostEntity
 
 ```ruby
-parse_user_agent_post = client.parse_user_agent_post
+parse_user_agent_post = client.ParseUserAgentPost
 ```
 
 ### Fields
@@ -167,7 +167,7 @@ parse_user_agent_post = client.parse_user_agent_post
 Create a new entity with the given data. Raises on error.
 
 ```ruby
-result = client.parse_user_agent_post.create({
+result = client.ParseUserAgentPost.create({
   "ua" => # `$STRING`,
 })
 ```

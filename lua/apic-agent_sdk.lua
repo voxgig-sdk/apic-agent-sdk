@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:parse_user_agent_get():list() / client:parse_user_agent_get():load({ id = ... })
-function ApicAgentSDK:parse_user_agent_get(data)
+-- Idiomatic facade: client:ParseUserAgentGet():list() / client:ParseUserAgentGet():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ApicAgentSDK:ParseUserAgentGet(data)
   local EntityMod = require("entity.parse_user_agent_get_entity")
   if data == nil then
     if self._parse_user_agent_get == nil then
@@ -256,15 +257,10 @@ function ApicAgentSDK:parse_user_agent_get(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:parse_user_agent_get() instead.
-function ApicAgentSDK:ParseUserAgentGet(data)
-  local EntityMod = require("entity.parse_user_agent_get_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:parse_user_agent_post():list() / client:parse_user_agent_post():load({ id = ... })
-function ApicAgentSDK:parse_user_agent_post(data)
+-- Idiomatic facade: client:ParseUserAgentPost():list() / client:ParseUserAgentPost():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ApicAgentSDK:ParseUserAgentPost(data)
   local EntityMod = require("entity.parse_user_agent_post_entity")
   if data == nil then
     if self._parse_user_agent_post == nil then
@@ -272,12 +268,6 @@ function ApicAgentSDK:parse_user_agent_post(data)
     end
     return self._parse_user_agent_post
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:parse_user_agent_post() instead.
-function ApicAgentSDK:ParseUserAgentPost(data)
-  local EntityMod = require("entity.parse_user_agent_post_entity")
   return EntityMod.new(self, data)
 end
 

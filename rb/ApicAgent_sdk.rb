@@ -208,26 +208,14 @@ class ApicAgentSDK
   end
 
 
-  # Idiomatic facade: client.parse_user_agent_get.list / client.parse_user_agent_get.load({ "id" => ... })
-  def parse_user_agent_get
-    require_relative 'entity/parse_user_agent_get_entity'
-    @parse_user_agent_get ||= ParseUserAgentGetEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.parse_user_agent_get instead.
+  # Canonical facade: client.ParseUserAgentGet.list / client.ParseUserAgentGet.load({ "id" => ... })
   def ParseUserAgentGet(data = nil)
     require_relative 'entity/parse_user_agent_get_entity'
     ParseUserAgentGetEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.parse_user_agent_post.list / client.parse_user_agent_post.load({ "id" => ... })
-  def parse_user_agent_post
-    require_relative 'entity/parse_user_agent_post_entity'
-    @parse_user_agent_post ||= ParseUserAgentPostEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.parse_user_agent_post instead.
+  # Canonical facade: client.ParseUserAgentPost.list / client.ParseUserAgentPost.load({ "id" => ... })
   def ParseUserAgentPost(data = nil)
     require_relative 'entity/parse_user_agent_post_entity'
     ParseUserAgentPostEntity.new(self, data)

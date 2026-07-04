@@ -121,7 +121,7 @@ Alias for `ApicAgentSDK.test()`.
 ## ParseUserAgentGetEntity
 
 ```ts
-const parse_user_agent_get = client.parse_user_agent_get
+const parse_user_agent_get = client.ParseUserAgentGet()
 ```
 
 ### Fields
@@ -141,7 +141,7 @@ const parse_user_agent_get = client.parse_user_agent_get
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.parse_user_agent_get.load({ id: 'parse_user_agent_get_id' })
+const result = await client.ParseUserAgentGet().load({ id: 'parse_user_agent_get_id' })
 ```
 
 ### Common Methods
@@ -175,7 +175,7 @@ Return a copy of the entity options.
 ## ParseUserAgentPostEntity
 
 ```ts
-const parse_user_agent_post = client.parse_user_agent_post
+const parse_user_agent_post = client.ParseUserAgentPost()
 ```
 
 ### Fields
@@ -196,7 +196,7 @@ const parse_user_agent_post = client.parse_user_agent_post
 Create a new entity with the given data.
 
 ```ts
-const result = await client.parse_user_agent_post.create({
+const result = await client.ParseUserAgentPost().create({
   ua: /* `$STRING` */,
 })
 ```

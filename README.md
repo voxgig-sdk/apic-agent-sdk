@@ -26,9 +26,9 @@ import { ApicAgentSDK } from '@voxgig-sdk/apic-agent'
 
 const client = new ApicAgentSDK()
 
-// Load parseuseragentget data
-const parseuseragentget = await client.parseuseragentget.load({})
-console.log(parseuseragentget.data)
+// Load parseuseragentget data (returns a ParseUserAgentGet)
+const parseuseragentget = await client.ParseUserAgentGet().load()
+console.log(parseuseragentget)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -85,8 +85,8 @@ from apicagent_sdk import ApicAgentSDK
 client = ApicAgentSDK()
 
 
-# Load a specific parseuseragentget
-parseuseragentget = client.parseuseragentget.load({"id": "example_id"})
+# Load a specific parseuseragentget (returns the record, raises on error)
+parseuseragentget = client.ParseUserAgentGet().load({"id": "example_id"})
 print(parseuseragentget)
 ```
 
@@ -99,8 +99,8 @@ require_once 'apicagent_sdk.php';
 $client = new ApicAgentSDK();
 
 
-// Load a specific parseuseragentget
-$parseuseragentget = $client->parseuseragentget()->load(["id" => "example_id"]);
+// Load a specific parseuseragentget (returns the bare record; throws on error)
+$parseuseragentget = $client->ParseUserAgentGet()->load(["id" => "example_id"]);
 print_r($parseuseragentget);
 ```
 
@@ -124,8 +124,8 @@ require_relative "ApicAgent_sdk"
 client = ApicAgentSDK.new
 
 
-# Load a specific parseuseragentget
-parseuseragentget = client.parseuseragentget.load({ "id" => "example_id" })
+# Load a specific parseuseragentget (returns the bare record; raises on error)
+parseuseragentget = client.ParseUserAgentGet.load({ "id" => "example_id" })
 puts parseuseragentget
 ```
 
@@ -138,7 +138,7 @@ local client = sdk.new()
 
 
 -- Load a specific parseuseragentget
-local parseuseragentget, err = client:parseuseragentget():load({ id = "example_id" })
+local parseuseragentget, err = client:ParseUserAgentGet():load({ id = "example_id" })
 print(parseuseragentget)
 ```
 
@@ -151,22 +151,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = ApicAgentSDK.test()
-const result = await client.parseuseragentget.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const parseuseragentget = await client.ParseUserAgentGet().load({ id: 'test01' })
+// parseuseragentget is a bare ParseUserAgentGet populated with mock data
+console.log(parseuseragentget)
 ```
 
 ### Python
 
 ```python
 client = ApicAgentSDK.test()
-result = client.parseuseragentget.load({"id": "test01"})
+parseuseragentget = client.ParseUserAgentGet().load({"id": "test01"})
+print(parseuseragentget)
 ```
 
 ### PHP
 
 ```php
-$client = ApicAgentSDK::test();
-$result = $client->parseuseragentget()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = ApicAgentSDK::test([
+    "entity" => ["parseuseragentget" => ["test01" => ["id" => "test01"]]],
+]);
+$parseuseragentget = $client->ParseUserAgentGet()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -181,15 +186,18 @@ result, err := client.ParseUserAgentGet(nil).Load(
 ### Ruby
 
 ```ruby
-client = ApicAgentSDK.test
-result = client.parseuseragentget.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = ApicAgentSDK.test({
+  "entity" => { "parseuseragentget" => { "test01" => { "id" => "test01" } } },
+})
+parseuseragentget = client.ParseUserAgentGet.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:parseuseragentget():load({ id = "test01" })
+local result, err = client:ParseUserAgentGet():load({ id = "test01" })
 ```
 
 ## How it works
@@ -237,6 +245,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

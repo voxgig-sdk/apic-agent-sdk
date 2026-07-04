@@ -32,8 +32,9 @@ client = ApicAgentSDK.new
 
 ```ruby
 begin
-  result = client.parseuseragentget.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare ParseUserAgentGet record (raises on error).
+  parseuseragentget = client.ParseUserAgentGet.load({ "id" => "example_id" })
+  puts parseuseragentget
 rescue => err
   warn "load failed: #{err}"
 end
@@ -80,13 +81,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = ApicAgentSDK.test
+client = ApicAgentSDK.test({
+  "entity" => { "parseuseragentget" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.parseuseragentget.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+parseuseragentget = client.ParseUserAgentGet.load({ "id" => "test01" })
+puts parseuseragentget
 ```
 
 ### Use a custom fetch function
@@ -238,7 +243,7 @@ API path: `/`
 
 ### ParseUserAgentGet
 
-Create an instance: `const parse_user_agent_get = client.parse_user_agent_get`
+Create an instance: `parse_user_agent_get = client.ParseUserAgentGet`
 
 #### Operations
 
@@ -258,14 +263,15 @@ Create an instance: `const parse_user_agent_get = client.parse_user_agent_get`
 
 #### Example: Load
 
-```ts
-const parse_user_agent_get = await client.parse_user_agent_get.load({ id: 'parse_user_agent_get_id' })
+```ruby
+# load returns the bare ParseUserAgentGet record (raises on error).
+parse_user_agent_get = client.ParseUserAgentGet.load({ "id" => "parse_user_agent_get_id" })
 ```
 
 
 ### ParseUserAgentPost
 
-Create an instance: `const parse_user_agent_post = client.parse_user_agent_post`
+Create an instance: `parse_user_agent_post = client.ParseUserAgentPost`
 
 #### Operations
 
@@ -286,9 +292,9 @@ Create an instance: `const parse_user_agent_post = client.parse_user_agent_post`
 
 #### Example: Create
 
-```ts
-const parse_user_agent_post = await client.parse_user_agent_post.create({
-  ua: /* `$STRING` */,
+```ruby
+parse_user_agent_post = client.ParseUserAgentPost.create({
+  "ua" => nil, # `$STRING`
 })
 ```
 
@@ -364,7 +370,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-parseuseragentget = client.parseuseragentget
+parseuseragentget = client.ParseUserAgentGet
 parseuseragentget.load({ "id" => "example_id" })
 
 # parseuseragentget.data_get now returns the loaded parseuseragentget data

@@ -220,41 +220,21 @@ class ApicAgentSDK:
         }
 
 
-    @property
-    def parse_user_agent_get(self):
-        """Idiomatic facade: client.parse_user_agent_get.list() / client.parse_user_agent_get.load({"id": ...})."""
-        from entity.parse_user_agent_get_entity import ParseUserAgentGetEntity
-        cached = getattr(self, "_parse_user_agent_get", None)
-        if cached is None:
-            cached = ParseUserAgentGetEntity(self, None)
-            self._parse_user_agent_get = cached
-        return cached
-
-    def ParseUserAgentGet(self, data=None):
-        # Deprecated: use client.parse_user_agent_get instead.
+    def ParseUserAgentGet(self, data=None) -> "ParseUserAgentGetEntity":
+        """Entity factory: client.ParseUserAgentGet().list({}) / client.ParseUserAgentGet().load({"id": ...})."""
         from entity.parse_user_agent_get_entity import ParseUserAgentGetEntity
         return ParseUserAgentGetEntity(self, data)
 
 
-    @property
-    def parse_user_agent_post(self):
-        """Idiomatic facade: client.parse_user_agent_post.list() / client.parse_user_agent_post.load({"id": ...})."""
-        from entity.parse_user_agent_post_entity import ParseUserAgentPostEntity
-        cached = getattr(self, "_parse_user_agent_post", None)
-        if cached is None:
-            cached = ParseUserAgentPostEntity(self, None)
-            self._parse_user_agent_post = cached
-        return cached
-
-    def ParseUserAgentPost(self, data=None):
-        # Deprecated: use client.parse_user_agent_post instead.
+    def ParseUserAgentPost(self, data=None) -> "ParseUserAgentPostEntity":
+        """Entity factory: client.ParseUserAgentPost().list({}) / client.ParseUserAgentPost().load({"id": ...})."""
         from entity.parse_user_agent_post_entity import ParseUserAgentPostEntity
         return ParseUserAgentPostEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "ApicAgentSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -274,3 +254,10 @@ class ApicAgentSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.parse_user_agent_get_entity import ParseUserAgentGetEntity
+    from entity.parse_user_agent_post_entity import ParseUserAgentPostEntity

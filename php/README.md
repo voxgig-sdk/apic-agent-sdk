@@ -33,9 +33,10 @@ $client = new ApicAgentSDK();
 
 ```php
 try {
-    $result = $client->parseuseragentget()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare ParseUserAgentGet record (throws on error).
+    $parseuseragentget = $client->ParseUserAgentGet()->load(["id" => "example_id"]);
+    print_r($parseuseragentget);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -81,13 +82,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = ApicAgentSDK::test();
+$client = ApicAgentSDK::test([
+    "entity" => ["parseuseragentget" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->parseuseragentget()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$parseuseragentget = $client->ParseUserAgentGet()->load(["id" => "test01"]);
+print_r($parseuseragentget);
 ```
 
 ### Use a custom fetch function
@@ -243,7 +248,7 @@ API path: `/`
 
 ### ParseUserAgentGet
 
-Create an instance: `const parse_user_agent_get = client.parse_user_agent_get`
+Create an instance: `$parse_user_agent_get = $client->ParseUserAgentGet();`
 
 #### Operations
 
@@ -263,14 +268,15 @@ Create an instance: `const parse_user_agent_get = client.parse_user_agent_get`
 
 #### Example: Load
 
-```ts
-const parse_user_agent_get = await client.parse_user_agent_get.load({ id: 'parse_user_agent_get_id' })
+```php
+// load() returns the bare ParseUserAgentGet record (throws on error).
+$parse_user_agent_get = $client->ParseUserAgentGet()->load(["id" => "parse_user_agent_get_id"]);
 ```
 
 
 ### ParseUserAgentPost
 
-Create an instance: `const parse_user_agent_post = client.parse_user_agent_post`
+Create an instance: `$parse_user_agent_post = $client->ParseUserAgentPost();`
 
 #### Operations
 
@@ -291,10 +297,10 @@ Create an instance: `const parse_user_agent_post = client.parse_user_agent_post`
 
 #### Example: Create
 
-```ts
-const parse_user_agent_post = await client.parse_user_agent_post.create({
-  ua: /* `$STRING` */,
-})
+```php
+$parse_user_agent_post = $client->ParseUserAgentPost()->create([
+    "ua" => null, // `$STRING`
+]);
 ```
 
 
@@ -369,7 +375,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$parseuseragentget = $client->parseuseragentget();
+$parseuseragentget = $client->ParseUserAgentGet();
 $parseuseragentget->load(["id" => "example_id"]);
 
 // $parseuseragentget->dataGet() now returns the loaded parseuseragentget data
