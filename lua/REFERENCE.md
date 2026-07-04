@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -88,7 +87,7 @@ same parameters as `direct()`.
 ## ParseUserAgentGetEntity
 
 ```lua
-local parse_user_agent_get = client:ParseUserAgentGet(nil)
+local parse_user_agent_get = client:parse_user_agent_get(nil)
 ```
 
 ### Fields
@@ -108,7 +107,7 @@ local parse_user_agent_get = client:ParseUserAgentGet(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ParseUserAgentGet():load({ id = "parse_user_agent_get_id" })
+local result, err = client:parse_user_agent_get():load({ id = "parse_user_agent_get_id" })
 ```
 
 ### Common Methods
@@ -144,7 +143,7 @@ Return the entity name.
 ## ParseUserAgentPostEntity
 
 ```lua
-local parse_user_agent_post = client:ParseUserAgentPost(nil)
+local parse_user_agent_post = client:parse_user_agent_post(nil)
 ```
 
 ### Fields
@@ -165,7 +164,7 @@ local parse_user_agent_post = client:ParseUserAgentPost(nil)
 Create a new entity with the given data.
 
 ```lua
-local result, err = client:ParseUserAgentPost():create({
+local result, err = client:parse_user_agent_post():create({
   ua = --[[ `$STRING` ]],
 })
 ```

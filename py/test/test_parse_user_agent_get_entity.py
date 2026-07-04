@@ -49,8 +49,7 @@ class TestParseUserAgentGetEntity:
         # LOAD
         parse_user_agent_get_ref01_ent = client.ParseUserAgentGet(None)
         parse_user_agent_get_ref01_match_dt0 = {}
-        parse_user_agent_get_ref01_data_dt0_loaded, err = parse_user_agent_get_ref01_ent.load(parse_user_agent_get_ref01_match_dt0, None)
-        assert err is None
+        parse_user_agent_get_ref01_data_dt0_loaded = parse_user_agent_get_ref01_ent.load(parse_user_agent_get_ref01_match_dt0, None)
         assert parse_user_agent_get_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _parse_user_agent_get_basic_setup(extra):
         "APICAGENT_TEST_PARSE_USER_AGENT_GET_ENTID": idmap,
         "APICAGENT_TEST_LIVE": "FALSE",
         "APICAGENT_TEST_EXPLAIN": "FALSE",
-        "APICAGENT_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _parse_user_agent_get_basic_setup(extra):
     if env.get("APICAGENT_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("APICAGENT_APIKEY"),
             },
             extra or {},
         ])

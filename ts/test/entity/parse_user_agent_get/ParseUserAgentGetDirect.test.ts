@@ -78,14 +78,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'APICAGENT_TEST_PARSE_USER_AGENT_GET_ENTID': {},
     'APICAGENT_TEST_LIVE': 'FALSE',
-    'APICAGENT_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.APICAGENT_TEST_LIVE
 
   if (live) {
     const client = new ApicAgentSDK({
-      apikey: env.APICAGENT_APIKEY,
     })
 
     let idmap: any = env['APICAGENT_TEST_PARSE_USER_AGENT_GET_ENTID']

@@ -21,7 +21,7 @@ class ParseUserAgentGetDirectTest < Minitest::Test
       query["ua"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"
     end
 
-    result, err = client.direct({
+    result = client.direct({
       "path" => "",
       "method" => "GET",
       "params" => params,
@@ -31,8 +31,8 @@ class ParseUserAgentGetDirectTest < Minitest::Test
       # Live mode is lenient: synthetic IDs frequently 4xx. Skip rather
       # than fail when the load endpoint isn't reachable with the IDs
       # we can construct from setup.idmap.
-      if !err.nil?
-        skip("load call failed (likely synthetic IDs against live API): #{err}")
+      if !result["err"].nil?
+        skip("load call failed (likely synthetic IDs against live API): #{result["err"]}")
         return
       end
       unless result["ok"]
@@ -45,7 +45,7 @@ class ParseUserAgentGetDirectTest < Minitest::Test
         return
       end
     else
-      assert_nil err
+      assert_nil result["err"]
       assert result["ok"]
       assert_equal 200, Helpers.to_int(result["status"])
       assert !result["data"].nil?
@@ -67,14 +67,12 @@ def parse_user_agent_get_direct_setup(mockres)
   env = Runner.env_override({
     "APICAGENT_TEST_PARSE_USER_AGENT_GET_ENTID" => {},
     "APICAGENT_TEST_LIVE" => "FALSE",
-    "APICAGENT_APIKEY" => "NONE",
   })
 
   live = env["APICAGENT_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
-      "apikey" => env["APICAGENT_APIKEY"],
     }
     client = ApicAgentSDK.new(merged_opts)
     return {

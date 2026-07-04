@@ -244,12 +244,38 @@ end
 
 
 
+-- Idiomatic facade: client:parse_user_agent_get():list() / client:parse_user_agent_get():load({ id = ... })
+function ApicAgentSDK:parse_user_agent_get(data)
+  local EntityMod = require("entity.parse_user_agent_get_entity")
+  if data == nil then
+    if self._parse_user_agent_get == nil then
+      self._parse_user_agent_get = EntityMod.new(self, nil)
+    end
+    return self._parse_user_agent_get
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:parse_user_agent_get() instead.
 function ApicAgentSDK:ParseUserAgentGet(data)
   local EntityMod = require("entity.parse_user_agent_get_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:parse_user_agent_post():list() / client:parse_user_agent_post():load({ id = ... })
+function ApicAgentSDK:parse_user_agent_post(data)
+  local EntityMod = require("entity.parse_user_agent_post_entity")
+  if data == nil then
+    if self._parse_user_agent_post == nil then
+      self._parse_user_agent_post = EntityMod.new(self, nil)
+    end
+    return self._parse_user_agent_post
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:parse_user_agent_post() instead.
 function ApicAgentSDK:ParseUserAgentPost(data)
   local EntityMod = require("entity.parse_user_agent_post_entity")
   return EntityMod.new(self, data)

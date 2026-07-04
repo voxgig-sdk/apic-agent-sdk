@@ -85,6 +85,27 @@ func (e *ParseUserAgentPostEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an ParseUserAgentPost; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *ParseUserAgentPostEntity) DataTyped(data ...ParseUserAgentPost) ParseUserAgentPost {
+	if len(data) > 0 {
+		return typedFrom[ParseUserAgentPost](e.Data(asMap(data[0])))
+	}
+	return typedFrom[ParseUserAgentPost](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through ParseUserAgentPost (all fields
+// optional at the wire level).
+func (e *ParseUserAgentPostEntity) MatchTyped(match ...ParseUserAgentPost) ParseUserAgentPost {
+	if len(match) > 0 {
+		return typedFrom[ParseUserAgentPost](e.Match(asMap(match[0])))
+	}
+	return typedFrom[ParseUserAgentPost](e.Match())
+}
+
 func (e *ParseUserAgentPostEntity) Load(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("load", e.name)
 }
@@ -116,6 +137,17 @@ func (e *ParseUserAgentPostEntity) Create(reqdata map[string]any, ctrl map[strin
 			}
 		}
 	})
+}
+
+// CreateTyped is the statically-typed variant of Create: it takes an
+// ParseUserAgentPostCreateData and returns an ParseUserAgentPost. It delegates to the untyped
+// Create (identical runtime) and converts at the typed boundary.
+func (e *ParseUserAgentPostEntity) CreateTyped(reqdata ParseUserAgentPostCreateData, ctrl map[string]any) (ParseUserAgentPost, error) {
+	res, err := e.Create(asMap(reqdata), ctrl)
+	if err != nil {
+		return ParseUserAgentPost{}, err
+	}
+	return typedFrom[ParseUserAgentPost](res), nil
 }
 
 

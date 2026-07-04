@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch ParseUserAgentGetLoadMatch
+---@param ctrl? table
+---@return ParseUserAgentGet
+---@return string? err
 function ParseUserAgentGetEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -3,6 +3,8 @@
 import { ParseUserAgentGetEntity } from './entity/ParseUserAgentGetEntity'
 import { ParseUserAgentPostEntity } from './entity/ParseUserAgentPostEntity'
 
+export type * from './ApicAgentTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -203,12 +205,28 @@ class ApicAgentSDK {
 
 
 
+  _parse_user_agent_get?: ParseUserAgentGetEntity
+
+  // Idiomatic facade: `client.parse_user_agent_get.list()` / `client.parse_user_agent_get.load({ id })`.
+  get parse_user_agent_get(): ParseUserAgentGetEntity {
+    return (this._parse_user_agent_get ??= new ParseUserAgentGetEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.parse_user_agent_get` instead. */
   ParseUserAgentGet(data?: any) {
     const self = this
     return new ParseUserAgentGetEntity(self,data)
   }
 
 
+  _parse_user_agent_post?: ParseUserAgentPostEntity
+
+  // Idiomatic facade: `client.parse_user_agent_post.list()` / `client.parse_user_agent_post.load({ id })`.
+  get parse_user_agent_post(): ParseUserAgentPostEntity {
+    return (this._parse_user_agent_post ??= new ParseUserAgentPostEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.parse_user_agent_post` instead. */
   ParseUserAgentPost(data?: any) {
     const self = this
     return new ParseUserAgentPostEntity(self,data)

@@ -9,12 +9,9 @@ The Lua SDK for the ApicAgent API — an entity-oriented client using Lua conven
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-apic-agent
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/apic-agent-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -31,15 +28,13 @@ loading a specific record.
 ```lua
 local sdk = require("apic-agent_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("APIC-AGENT_APIKEY"),
-})
+local client = sdk.new()
 ```
 
 ### 3. Load a parseuseragentget
 
 ```lua
-local result, err = client:ParseUserAgentGet():load({ id = "example_id" })
+local result, err = client:parseuseragentget():load({ id = "example_id" })
 if err then error(err) end
 print(result)
 ```
@@ -87,7 +82,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:ApicAgent():load({ id = "test01" })
+local result, err = client:parseuseragentget():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -120,8 +115,7 @@ local client = sdk.new({
 Create a `.env.local` file at the project root:
 
 ```
-APIC-AGENT_TEST_LIVE=TRUE
-APIC-AGENT_APIKEY=<your-key>
+APIC_AGENT_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -144,7 +138,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -241,7 +234,7 @@ API path: `/`
 
 ### ParseUserAgentGet
 
-Create an instance: `const parse_user_agent_get = client.ParseUserAgentGet()`
+Create an instance: `const parse_user_agent_get = client.parse_user_agent_get`
 
 #### Operations
 
@@ -262,13 +255,13 @@ Create an instance: `const parse_user_agent_get = client.ParseUserAgentGet()`
 #### Example: Load
 
 ```ts
-const parse_user_agent_get = await client.ParseUserAgentGet().load({ id: 'parse_user_agent_get_id' })
+const parse_user_agent_get = await client.parse_user_agent_get.load({ id: 'parse_user_agent_get_id' })
 ```
 
 
 ### ParseUserAgentPost
 
-Create an instance: `const parse_user_agent_post = client.ParseUserAgentPost()`
+Create an instance: `const parse_user_agent_post = client.parse_user_agent_post`
 
 #### Operations
 
@@ -290,7 +283,7 @@ Create an instance: `const parse_user_agent_post = client.ParseUserAgentPost()`
 #### Example: Create
 
 ```ts
-const parse_user_agent_post = await client.ParseUserAgentPost().create({
+const parse_user_agent_post = await client.parse_user_agent_post.create({
   ua: /* `$STRING` */,
 })
 ```
@@ -367,11 +360,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local parseuseragentget = client:parseuseragentget()
+parseuseragentget:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- parseuseragentget:data_get() now returns the loaded parseuseragentget data
+-- parseuseragentget:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -245,11 +245,17 @@ func (sdk *ApicAgentSDK) Direct(fetchargs map[string]any) (map[string]any, error
 }
 
 
+// ParseUserAgentGet returns a ParseUserAgentGet entity bound to this client.
+// Idiomatic usage: client.ParseUserAgentGet(nil).List(nil, nil) or
+// client.ParseUserAgentGet(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ApicAgentSDK) ParseUserAgentGet(data map[string]any) ApicAgentEntity {
 	return NewParseUserAgentGetEntityFunc(sdk, data)
 }
 
 
+// ParseUserAgentPost returns a ParseUserAgentPost entity bound to this client.
+// Idiomatic usage: client.ParseUserAgentPost(nil).List(nil, nil) or
+// client.ParseUserAgentPost(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ApicAgentSDK) ParseUserAgentPost(data map[string]any) ApicAgentEntity {
 	return NewParseUserAgentPostEntityFunc(sdk, data)
 }

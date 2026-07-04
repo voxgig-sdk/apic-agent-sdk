@@ -83,6 +83,10 @@ end
 
 
 
+---@param reqdata ParseUserAgentPostCreateData
+---@param ctrl? table
+---@return ParseUserAgentPost
+---@return string? err
 function ParseUserAgentPostEntity:create(reqdata, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

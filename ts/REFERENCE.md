@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -122,7 +121,7 @@ Alias for `ApicAgentSDK.test()`.
 ## ParseUserAgentGetEntity
 
 ```ts
-const parse_user_agent_get = client.ParseUserAgentGet()
+const parse_user_agent_get = client.parse_user_agent_get
 ```
 
 ### Fields
@@ -142,7 +141,7 @@ const parse_user_agent_get = client.ParseUserAgentGet()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.ParseUserAgentGet().load({ id: 'parse_user_agent_get_id' })
+const result = await client.parse_user_agent_get.load({ id: 'parse_user_agent_get_id' })
 ```
 
 ### Common Methods
@@ -176,7 +175,7 @@ Return a copy of the entity options.
 ## ParseUserAgentPostEntity
 
 ```ts
-const parse_user_agent_post = client.ParseUserAgentPost()
+const parse_user_agent_post = client.parse_user_agent_post
 ```
 
 ### Fields
@@ -197,7 +196,7 @@ const parse_user_agent_post = client.ParseUserAgentPost()
 Create a new entity with the given data.
 
 ```ts
-const result = await client.ParseUserAgentPost().create({
+const result = await client.parse_user_agent_post.create({
   ua: /* `$STRING` */,
 })
 ```

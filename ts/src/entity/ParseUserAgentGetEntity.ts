@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  ParseUserAgentGet,
+  ParseUserAgentGetLoadMatch,
+} from '../ApicAgentTypes'
 
 // TODO: needs Entity superclass
-class ParseUserAgentGetEntity extends ApicAgentEntityBase {
+class ParseUserAgentGetEntity extends ApicAgentEntityBase<ParseUserAgentGet> {
 
   constructor(client: ApicAgentSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class ParseUserAgentGetEntity extends ApicAgentEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: ParseUserAgentGetLoadMatch, ctrl?: Control): Promise<ParseUserAgentGet> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class ParseUserAgentGetEntity extends ApicAgentEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<ParseUserAgentGet> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
