@@ -8,7 +8,7 @@ Complete API reference for the ApicAgent Python SDK.
 ### Constructor
 
 ```python
-from apic-agent_sdk import ApicAgentSDK
+from apicagent_sdk import ApicAgentSDK
 
 client = ApicAgentSDK(options)
 ```
@@ -91,11 +91,11 @@ parse_user_agent_get = client.ParseUserAgentGet()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `browser_family` | ``$STRING`` | No |  |
-| `client` | ``$OBJECT`` | No |  |
-| `device` | ``$OBJECT`` | No |  |
-| `os` | ``$OBJECT`` | No |  |
-| `os_family` | ``$STRING`` | No |  |
+| `browser_family` | `str` | No |  |
+| `client` | `dict` | No |  |
+| `device` | `dict` | No |  |
+| `os` | `dict` | No |  |
+| `os_family` | `str` | No |  |
 
 ### Operations
 
@@ -104,7 +104,7 @@ parse_user_agent_get = client.ParseUserAgentGet()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.ParseUserAgentGet().load({"id": "parse_user_agent_get_id"})
+result = client.ParseUserAgentGet().load()
 ```
 
 ### Common Methods
@@ -146,12 +146,12 @@ parse_user_agent_post = client.ParseUserAgentPost()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `browser_family` | ``$STRING`` | No |  |
-| `client` | ``$OBJECT`` | No |  |
-| `device` | ``$OBJECT`` | No |  |
-| `os` | ``$OBJECT`` | No |  |
-| `os_family` | ``$STRING`` | No |  |
-| `ua` | ``$STRING`` | Yes |  |
+| `browser_family` | `str` | No |  |
+| `client` | `dict` | No |  |
+| `device` | `dict` | No |  |
+| `os` | `dict` | No |  |
+| `os_family` | `str` | No |  |
+| `ua` | `str` | Yes |  |
 
 ### Operations
 
@@ -161,7 +161,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ParseUserAgentPost().create({
-    "ua": ...,  # `$STRING`
+    "ua": "example",  # str
 })
 ```
 

@@ -17,8 +17,7 @@ type ParseUserAgentGet struct {
 	OsFamily *string `json:"os_family,omitempty"`
 }
 
-// ParseUserAgentGetLoadMatch mirrors the parse_user_agent_get fields as an all-optional match
-// filter (Go analog of Partial<ParseUserAgentGet>).
+// ParseUserAgentGetLoadMatch is the typed request payload for ParseUserAgentGet.LoadTyped.
 type ParseUserAgentGetLoadMatch struct {
 	BrowserFamily *string `json:"browser_family,omitempty"`
 	Client *map[string]any `json:"client,omitempty"`
@@ -37,15 +36,14 @@ type ParseUserAgentPost struct {
 	Ua string `json:"ua"`
 }
 
-// ParseUserAgentPostCreateData mirrors the parse_user_agent_post fields as an all-optional match
-// filter (Go analog of Partial<ParseUserAgentPost>).
+// ParseUserAgentPostCreateData is the typed request payload for ParseUserAgentPost.CreateTyped.
 type ParseUserAgentPostCreateData struct {
 	BrowserFamily *string `json:"browser_family,omitempty"`
 	Client *map[string]any `json:"client,omitempty"`
 	Device *map[string]any `json:"device,omitempty"`
 	Os *map[string]any `json:"os,omitempty"`
 	OsFamily *string `json:"os_family,omitempty"`
-	Ua *string `json:"ua,omitempty"`
+	Ua string `json:"ua"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

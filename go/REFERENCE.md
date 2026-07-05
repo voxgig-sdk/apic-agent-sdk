@@ -101,11 +101,11 @@ parse_user_agent_get := client.ParseUserAgentGet(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `browser_family` | ``$STRING`` | No |  |
-| `client` | ``$OBJECT`` | No |  |
-| `device` | ``$OBJECT`` | No |  |
-| `os` | ``$OBJECT`` | No |  |
-| `os_family` | ``$STRING`` | No |  |
+| `browser_family` | `string` | No |  |
+| `client` | `map[string]any` | No |  |
+| `device` | `map[string]any` | No |  |
+| `os` | `map[string]any` | No |  |
+| `os_family` | `string` | No |  |
 
 ### Operations
 
@@ -114,7 +114,7 @@ parse_user_agent_get := client.ParseUserAgentGet(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.ParseUserAgentGet(nil).Load(map[string]any{"id": "parse_user_agent_get_id"}, nil)
+result, err := client.ParseUserAgentGet(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -151,12 +151,12 @@ parse_user_agent_post := client.ParseUserAgentPost(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `browser_family` | ``$STRING`` | No |  |
-| `client` | ``$OBJECT`` | No |  |
-| `device` | ``$OBJECT`` | No |  |
-| `os` | ``$OBJECT`` | No |  |
-| `os_family` | ``$STRING`` | No |  |
-| `ua` | ``$STRING`` | Yes |  |
+| `browser_family` | `string` | No |  |
+| `client` | `map[string]any` | No |  |
+| `device` | `map[string]any` | No |  |
+| `os` | `map[string]any` | No |  |
+| `os_family` | `string` | No |  |
+| `ua` | `string` | Yes |  |
 
 ### Operations
 
@@ -166,7 +166,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ParseUserAgentPost(nil).Create(map[string]any{
-    "ua": /* `$STRING` */,
+    "ua": /* string */,
 }, nil)
 ```
 

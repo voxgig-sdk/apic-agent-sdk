@@ -33,7 +33,7 @@ ParseUserAgentGet = Struct.new(
   keyword_init: true
 )
 
-# Match filter for ParseUserAgentGet#load (any subset of ParseUserAgentGet fields).
+# Request payload for ParseUserAgentGet#load.
 #
 # @!attribute [rw] browser_family
 #   @return [String, nil]
@@ -87,7 +87,7 @@ ParseUserAgentPost = Struct.new(
   keyword_init: true
 )
 
-# Match filter for ParseUserAgentPost#create (any subset of ParseUserAgentPost fields).
+# Request payload for ParseUserAgentPost#create.
 #
 # @!attribute [rw] browser_family
 #   @return [String, nil]
@@ -105,7 +105,7 @@ ParseUserAgentPost = Struct.new(
 #   @return [String, nil]
 #
 # @!attribute [rw] ua
-#   @return [String, nil]
+#   @return [String]
 ParseUserAgentPostCreateData = Struct.new(
   :browser_family,
   :client,

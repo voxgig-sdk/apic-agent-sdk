@@ -44,10 +44,13 @@ class ParseUserAgentPost(ParseUserAgentPostRequired, total=False):
     os_family: str
 
 
-class ParseUserAgentPostCreateData(TypedDict, total=False):
+class ParseUserAgentPostCreateDataRequired(TypedDict):
+    ua: str
+
+
+class ParseUserAgentPostCreateData(ParseUserAgentPostCreateDataRequired, total=False):
     browser_family: str
     client: dict
     device: dict
     os: dict
     os_family: str
-    ua: str

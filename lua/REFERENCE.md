@@ -94,11 +94,11 @@ local parse_user_agent_get = client:ParseUserAgentGet(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `browser_family` | ``$STRING`` | No |  |
-| `client` | ``$OBJECT`` | No |  |
-| `device` | ``$OBJECT`` | No |  |
-| `os` | ``$OBJECT`` | No |  |
-| `os_family` | ``$STRING`` | No |  |
+| `browser_family` | `string` | No |  |
+| `client` | `table` | No |  |
+| `device` | `table` | No |  |
+| `os` | `table` | No |  |
+| `os_family` | `string` | No |  |
 
 ### Operations
 
@@ -107,7 +107,7 @@ local parse_user_agent_get = client:ParseUserAgentGet(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ParseUserAgentGet():load({ id = "parse_user_agent_get_id" })
+local result, err = client:ParseUserAgentGet():load()
 ```
 
 ### Common Methods
@@ -150,12 +150,12 @@ local parse_user_agent_post = client:ParseUserAgentPost(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `browser_family` | ``$STRING`` | No |  |
-| `client` | ``$OBJECT`` | No |  |
-| `device` | ``$OBJECT`` | No |  |
-| `os` | ``$OBJECT`` | No |  |
-| `os_family` | ``$STRING`` | No |  |
-| `ua` | ``$STRING`` | Yes |  |
+| `browser_family` | `string` | No |  |
+| `client` | `table` | No |  |
+| `device` | `table` | No |  |
+| `os` | `table` | No |  |
+| `os_family` | `string` | No |  |
+| `ua` | `string` | Yes |  |
 
 ### Operations
 
@@ -165,7 +165,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ParseUserAgentPost():create({
-  ua = --[[ `$STRING` ]],
+  ua = --[[ string ]],
 })
 ```
 

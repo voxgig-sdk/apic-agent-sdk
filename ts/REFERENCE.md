@@ -128,11 +128,11 @@ const parse_user_agent_get = client.ParseUserAgentGet()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `browser_family` | ``$STRING`` | No |  |
-| `client` | ``$OBJECT`` | No |  |
-| `device` | ``$OBJECT`` | No |  |
-| `os` | ``$OBJECT`` | No |  |
-| `os_family` | ``$STRING`` | No |  |
+| `browser_family` | `string` | No |  |
+| `client` | `Record<string, any>` | No |  |
+| `device` | `Record<string, any>` | No |  |
+| `os` | `Record<string, any>` | No |  |
+| `os_family` | `string` | No |  |
 
 ### Operations
 
@@ -141,7 +141,7 @@ const parse_user_agent_get = client.ParseUserAgentGet()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.ParseUserAgentGet().load({ id: 'parse_user_agent_get_id' })
+const result = await client.ParseUserAgentGet().load()
 ```
 
 ### Common Methods
@@ -182,12 +182,12 @@ const parse_user_agent_post = client.ParseUserAgentPost()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `browser_family` | ``$STRING`` | No |  |
-| `client` | ``$OBJECT`` | No |  |
-| `device` | ``$OBJECT`` | No |  |
-| `os` | ``$OBJECT`` | No |  |
-| `os_family` | ``$STRING`` | No |  |
-| `ua` | ``$STRING`` | Yes |  |
+| `browser_family` | `string` | No |  |
+| `client` | `Record<string, any>` | No |  |
+| `device` | `Record<string, any>` | No |  |
+| `os` | `Record<string, any>` | No |  |
+| `os_family` | `string` | No |  |
+| `ua` | `string` | Yes |  |
 
 ### Operations
 
@@ -197,7 +197,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ParseUserAgentPost().create({
-  ua: /* `$STRING` */,
+  ua: /* string */,
 })
 ```
 

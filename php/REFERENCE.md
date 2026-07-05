@@ -8,7 +8,7 @@ Complete API reference for the ApicAgent PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/apic-agent_sdk.php';
+require_once __DIR__ . '/apicagent_sdk.php';
 
 $client = new ApicAgentSDK($options);
 ```
@@ -49,11 +49,11 @@ Create a new `ParseUserAgentGetEntity` instance. Pass `null` for no initial data
 
 Create a new `ParseUserAgentPostEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): ApicAgentUtility`
 
 Return a copy of the SDK utility object.
 
@@ -96,11 +96,11 @@ $parse_user_agent_get = $client->ParseUserAgentGet();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `browser_family` | ``$STRING`` | No |  |
-| `client` | ``$OBJECT`` | No |  |
-| `device` | ``$OBJECT`` | No |  |
-| `os` | ``$OBJECT`` | No |  |
-| `os_family` | ``$STRING`` | No |  |
+| `browser_family` | `string` | No |  |
+| `client` | `array` | No |  |
+| `device` | `array` | No |  |
+| `os` | `array` | No |  |
+| `os_family` | `string` | No |  |
 
 ### Operations
 
@@ -109,24 +109,24 @@ $parse_user_agent_get = $client->ParseUserAgentGet();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->ParseUserAgentGet()->load(["id" => "parse_user_agent_get_id"]);
+$result = $client->ParseUserAgentGet()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -135,7 +135,7 @@ Set the entity match criteria.
 Create a new `ParseUserAgentGetEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -152,12 +152,12 @@ $parse_user_agent_post = $client->ParseUserAgentPost();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `browser_family` | ``$STRING`` | No |  |
-| `client` | ``$OBJECT`` | No |  |
-| `device` | ``$OBJECT`` | No |  |
-| `os` | ``$OBJECT`` | No |  |
-| `os_family` | ``$STRING`` | No |  |
-| `ua` | ``$STRING`` | Yes |  |
+| `browser_family` | `string` | No |  |
+| `client` | `array` | No |  |
+| `device` | `array` | No |  |
+| `os` | `array` | No |  |
+| `os_family` | `string` | No |  |
+| `ua` | `string` | Yes |  |
 
 ### Operations
 
@@ -167,25 +167,25 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ParseUserAgentPost()->create([
-  "ua" => /* `$STRING` */,
+  "ua" => null, // string
 ]);
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -194,7 +194,7 @@ Set the entity match criteria.
 Create a new `ParseUserAgentPostEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

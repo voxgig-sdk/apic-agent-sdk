@@ -4,6 +4,11 @@
 
 The TypeScript SDK for the ApicAgent API — a type-safe, entity-oriented client with full async/await support.
 
+The API is exposed as capitalised, semantic **Entities** — e.g.
+`client.ParseUserAgentGet()` — each with a small set of operations (`load`, `create`)
+instead of raw URL paths and query parameters. This keeps the surface
+predictable and low-friction for both humans and AI agents.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -34,10 +39,39 @@ const client = new ApicAgentSDK()
 
 ```ts
 try {
-  const parseuseragentget = await client.ParseUserAgentGet().load({ id: 'example_id' })
+  const parseuseragentget = await client.ParseUserAgentGet().load()
   console.log(parseuseragentget)
 } catch (err) {
   console.error('load failed:', err)
+}
+```
+
+
+## Error handling
+
+Entity operations reject on failure, so wrap them in `try` / `catch`:
+
+```ts
+try {
+  const parseuseragentget = await client.ParseUserAgentGet().load()
+  console.log(parseuseragentget)
+} catch (err) {
+  console.error('load failed:', err)
+}
+```
+
+The low-level `direct()` method does **not** throw — it returns the
+value or an `Error`, so check the result before using it:
+
+```ts
+const result = await client.direct({
+  path: '/api/resource/{id}',
+  method: 'GET',
+  params: { id: 'example_id' },
+})
+
+if (result instanceof Error) {
+  throw result
 }
 ```
 
@@ -86,7 +120,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = ApicAgentSDK.test()
 
-const parseuseragentget = await client.ParseUserAgentGet().load({ id: 'test01' })
+const parseuseragentget = await client.ParseUserAgentGet().load()
 // parseuseragentget is a bare entity populated with mock response data
 console.log(parseuseragentget)
 ```
@@ -105,12 +139,12 @@ Entity instances remember their last match and data:
 ```ts
 const entity = client.ParseUserAgentGet()
 
-// First call sets internal match
-await entity.load({ id: 'example' })
+// First call runs the operation and stores its result
+await entity.load()
 
-// Subsequent calls reuse the stored match
+// Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data.id) // 'example'
+console.log(data)
 ```
 
 ### Add custom middleware
@@ -200,12 +234,9 @@ All entities share the same interface.
 | Method | Signature | Description |
 | --- | --- | --- |
 | `load` | `load(reqmatch?, ctrl?): Promise<Entity>` | Load a single entity by match criteria. |
-| `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria. |
 | `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity. |
-| `update` | `update(reqdata?, ctrl?): Promise<Entity>` | Update an existing entity. |
-| `remove` | `remove(reqmatch?, ctrl?): Promise<void>` | Remove an entity. |
-| `data` | `data(data?): any` | Get or set entity data. |
-| `match` | `match(match?): any` | Get or set entity match criteria. |
+| `data` | `data(data?: Partial<Entity>): Entity` | Get or set entity data. |
+| `match` | `match(match?: Partial<Entity>): Partial<Entity>` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
 | `client` | `client(): ApicAgentSDK` | Return the parent SDK client. |
 | `entopts` | `entopts(): object` | Return a copy of the entity options. |
@@ -215,10 +246,7 @@ All entities share the same interface.
 Entity operations resolve to the entity data directly — there is no
 result envelope:
 
-- `load`, `create` and `update` resolve to a single entity object.
-- `list` resolves to an **array** of entity objects (iterate it directly;
-  there is no `.data` and no `.ok`).
-- `remove` resolves to `void`.
+- `load` and `create` resolve to a single entity object.
 
 On a failed request these methods **throw**, so wrap calls in
 `try`/`catch` to handle errors. Only `direct()` returns the result
@@ -302,16 +330,16 @@ Create an instance: `const parse_user_agent_get = client.ParseUserAgentGet()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `browser_family` | ``$STRING`` |  |
-| `client` | ``$OBJECT`` |  |
-| `device` | ``$OBJECT`` |  |
-| `os` | ``$OBJECT`` |  |
-| `os_family` | ``$STRING`` |  |
+| `browser_family` | `string` |  |
+| `client` | `Record<string, any>` |  |
+| `device` | `Record<string, any>` |  |
+| `os` | `Record<string, any>` |  |
+| `os_family` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const parse_user_agent_get = await client.ParseUserAgentGet().load({ id: 'parse_user_agent_get_id' })
+const parse_user_agent_get = await client.ParseUserAgentGet().load()
 ```
 
 
@@ -329,28 +357,32 @@ Create an instance: `const parse_user_agent_post = client.ParseUserAgentPost()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `browser_family` | ``$STRING`` |  |
-| `client` | ``$OBJECT`` |  |
-| `device` | ``$OBJECT`` |  |
-| `os` | ``$OBJECT`` |  |
-| `os_family` | ``$STRING`` |  |
-| `ua` | ``$STRING`` |  |
+| `browser_family` | `string` |  |
+| `client` | `Record<string, any>` |  |
+| `device` | `Record<string, any>` |  |
+| `os` | `Record<string, any>` |  |
+| `os_family` | `string` |  |
+| `ua` | `string` |  |
 
 #### Example: Create
 
 ```ts
 const parse_user_agent_post = await client.ParseUserAgentPost().create({
-  ua: /* `$STRING` */,
+  ua: /* string */,
 })
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -367,11 +399,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller.
-
-An unexpected exception triggers the `PreUnexpected` hook before
-propagating.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -413,10 +443,10 @@ calls on the same instance can rely on this state.
 
 ```ts
 const parseuseragentget = client.ParseUserAgentGet()
-await parseuseragentget.load({ id: "example_id" })
+await parseuseragentget.load()
 
-// parseuseragentget.data() now returns the loaded parseuseragentget data
-// parseuseragentget.match() returns { id: "example_id" }
+// parseuseragentget.data() now returns the parseuseragentget data from the last `load`
+// parseuseragentget.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

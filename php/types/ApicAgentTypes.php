@@ -22,7 +22,7 @@ class ParseUserAgentGet
     public ?string $os_family = null;
 }
 
-/** Match filter for ParseUserAgentGet#load (any subset of ParseUserAgentGet fields). */
+/** Request payload for ParseUserAgentGet#load. */
 class ParseUserAgentGetLoadMatch
 {
     public ?string $browser_family = null;
@@ -43,7 +43,7 @@ class ParseUserAgentPost
     public string $ua;
 }
 
-/** Match filter for ParseUserAgentPost#create (any subset of ParseUserAgentPost fields). */
+/** Request payload for ParseUserAgentPost#create. */
 class ParseUserAgentPostCreateData
 {
     public ?string $browser_family = null;
@@ -51,6 +51,6 @@ class ParseUserAgentPostCreateData
     public ?array $device = null;
     public ?array $os = null;
     public ?string $os_family = null;
-    public ?string $ua = null;
+    public string $ua;
 }
 

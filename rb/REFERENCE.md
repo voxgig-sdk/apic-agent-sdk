@@ -8,7 +8,7 @@ Complete API reference for the ApicAgent Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'apic-agent_sdk'
+require_relative 'ApicAgent_sdk'
 
 client = ApicAgentSDK.new(options)
 ```
@@ -97,11 +97,11 @@ parse_user_agent_get = client.ParseUserAgentGet
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `browser_family` | ``$STRING`` | No |  |
-| `client` | ``$OBJECT`` | No |  |
-| `device` | ``$OBJECT`` | No |  |
-| `os` | ``$OBJECT`` | No |  |
-| `os_family` | ``$STRING`` | No |  |
+| `browser_family` | `String` | No |  |
+| `client` | `Hash` | No |  |
+| `device` | `Hash` | No |  |
+| `os` | `Hash` | No |  |
+| `os_family` | `String` | No |  |
 
 ### Operations
 
@@ -110,7 +110,7 @@ parse_user_agent_get = client.ParseUserAgentGet
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.ParseUserAgentGet.load({ "id" => "parse_user_agent_get_id" })
+result = client.ParseUserAgentGet.load()
 ```
 
 ### Common Methods
@@ -153,12 +153,12 @@ parse_user_agent_post = client.ParseUserAgentPost
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `browser_family` | ``$STRING`` | No |  |
-| `client` | ``$OBJECT`` | No |  |
-| `device` | ``$OBJECT`` | No |  |
-| `os` | ``$OBJECT`` | No |  |
-| `os_family` | ``$STRING`` | No |  |
-| `ua` | ``$STRING`` | Yes |  |
+| `browser_family` | `String` | No |  |
+| `client` | `Hash` | No |  |
+| `device` | `Hash` | No |  |
+| `os` | `Hash` | No |  |
+| `os_family` | `String` | No |  |
+| `ua` | `String` | Yes |  |
 
 ### Operations
 
@@ -168,7 +168,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ParseUserAgentPost.create({
-  "ua" => # `$STRING`,
+  "ua" => "example", # String
 })
 ```
 

@@ -14,6 +14,11 @@
 ---@field os_family? string
 
 ---@class ParseUserAgentGetLoadMatch
+---@field browser_family? string
+---@field client? table
+---@field device? table
+---@field os? table
+---@field os_family? string
 
 ---@class ParseUserAgentPost
 ---@field browser_family? string
@@ -24,6 +29,12 @@
 ---@field ua string
 
 ---@class ParseUserAgentPostCreateData
+---@field browser_family? string
+---@field client? table
+---@field device? table
+---@field os? table
+---@field os_family? string
+---@field ua string
 
 local M = {}
 

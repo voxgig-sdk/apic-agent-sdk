@@ -221,13 +221,13 @@ class ApicAgentSDK:
 
 
     def ParseUserAgentGet(self, data=None) -> "ParseUserAgentGetEntity":
-        """Entity factory: client.ParseUserAgentGet().list({}) / client.ParseUserAgentGet().load({"id": ...})."""
+        """Entity factory: client.ParseUserAgentGet().list() / client.ParseUserAgentGet().load({"id": ...})."""
         from entity.parse_user_agent_get_entity import ParseUserAgentGetEntity
         return ParseUserAgentGetEntity(self, data)
 
 
     def ParseUserAgentPost(self, data=None) -> "ParseUserAgentPostEntity":
-        """Entity factory: client.ParseUserAgentPost().list({}) / client.ParseUserAgentPost().load({"id": ...})."""
+        """Entity factory: client.ParseUserAgentPost().list() / client.ParseUserAgentPost().load({"id": ...})."""
         from entity.parse_user_agent_post_entity import ParseUserAgentPostEntity
         return ParseUserAgentPostEntity(self, data)
 

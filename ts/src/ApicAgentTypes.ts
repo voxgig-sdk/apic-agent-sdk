@@ -13,7 +13,13 @@ export interface ParseUserAgentGet {
   os_family?: string
 }
 
-export type ParseUserAgentGetLoadMatch = Partial<ParseUserAgentGet>
+export interface ParseUserAgentGetLoadMatch {
+  browser_family?: string
+  client?: Record<string, any>
+  device?: Record<string, any>
+  os?: Record<string, any>
+  os_family?: string
+}
 
 export interface ParseUserAgentPost {
   browser_family?: string
@@ -24,5 +30,12 @@ export interface ParseUserAgentPost {
   ua: string
 }
 
-export type ParseUserAgentPostCreateData = Partial<ParseUserAgentPost>
+export interface ParseUserAgentPostCreateData {
+  browser_family?: string
+  client?: Record<string, any>
+  device?: Record<string, any>
+  os?: Record<string, any>
+  os_family?: string
+  ua: string
+}
 
