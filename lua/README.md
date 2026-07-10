@@ -309,7 +309,7 @@ Create an instance: `local parse_user_agent_post = client:ParseUserAgentPost(nil
 
 ```lua
 local parse_user_agent_post, err = client:ParseUserAgentPost():create({
-  ua = nil, -- string
+  ua = "example_ua", -- string
 })
 ```
 

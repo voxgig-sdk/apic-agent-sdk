@@ -168,7 +168,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ParseUserAgentPost.create({
-  "ua" => "example", # String
+  "ua" => "example_ua", # String
 })
 ```
 

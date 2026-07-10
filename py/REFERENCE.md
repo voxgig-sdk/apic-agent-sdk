@@ -161,7 +161,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ParseUserAgentPost().create({
-    "ua": "example",  # str
+    "ua": "example_ua",  # str
 })
 ```
 

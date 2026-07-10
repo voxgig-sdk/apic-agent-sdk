@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -321,15 +318,18 @@
           "url": "https://www.apicagent.com"
         },
         "description": "Free REST API to detect browser, OS, device from user agent string. Provides easy-to-use API to avoid user-agent parsing libraries.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://api.apicagent.com"
           }
         ],
+        "summary": "Free REST API to detect browser, OS, device from user agent string.",
         "termsOfService": "https://www.apicagent.com/terms",
         "title": "APIC Agent",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://apicagent.com"
       },
       "option": {},
       "target": {
@@ -382,6 +382,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -432,6 +435,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

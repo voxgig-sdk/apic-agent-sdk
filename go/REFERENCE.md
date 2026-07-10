@@ -94,7 +94,8 @@ same parameters as `Direct()`.
 ## ParseUserAgentGetEntity
 
 ```go
-parse_user_agent_get := client.ParseUserAgentGet(nil)
+parseUserAgentGet := client.ParseUserAgentGet(nil)
+fmt.Println(parseUserAgentGet.GetName()) // "parse_user_agent_get"
 ```
 
 ### Fields
@@ -115,6 +116,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.ParseUserAgentGet(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -144,7 +149,8 @@ Return the entity name.
 ## ParseUserAgentPostEntity
 
 ```go
-parse_user_agent_post := client.ParseUserAgentPost(nil)
+parseUserAgentPost := client.ParseUserAgentPost(nil)
+fmt.Println(parseUserAgentPost.GetName()) // "parse_user_agent_post"
 ```
 
 ### Fields
@@ -166,8 +172,12 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ParseUserAgentPost(nil).Create(map[string]any{
-    "ua": /* string */,
+    "ua": "example_ua",
 }, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

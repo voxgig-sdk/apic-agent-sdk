@@ -50,12 +50,12 @@ import (
 func main() {
     client := sdk.New()
 
-    // Load a single parseuseragentget — the value is the loaded record.
-    parseuseragentget, err := client.ParseUserAgentGet(nil).Load(nil, nil)
+    // Load a single parseUserAgentGet — the value is the loaded record.
+    parseUserAgentGet, err := client.ParseUserAgentGet(nil).Load(nil, nil)
     if err != nil {
         panic(err)
     }
-    fmt.Println(parseuseragentget)
+    fmt.Println(parseUserAgentGet)
 }
 ```
 
@@ -135,13 +135,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-parseuseragentget, err := client.ParseUserAgentGet(nil).Load(
+parseUserAgentGet, err := client.ParseUserAgentGet(nil).Load(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(parseuseragentget) // the returned mock data
+fmt.Println(parseUserAgentGet) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -247,9 +247,9 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    parseuseragentget, err := client.ParseUserAgentGet(nil).Load(nil, nil)
+    parseUserAgentGet, err := client.ParseUserAgentGet(nil).Load(nil, nil)
     if err != nil { /* handle */ }
-    // parseuseragentget is the returned record
+    // parseUserAgentGet is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -292,7 +292,7 @@ API path: `/`
 
 ### ParseUserAgentGet
 
-Create an instance: `parse_user_agent_get := client.ParseUserAgentGet(nil)`
+Create an instance: `parseUserAgentGet := client.ParseUserAgentGet(nil)`
 
 #### Operations
 
@@ -313,17 +313,17 @@ Create an instance: `parse_user_agent_get := client.ParseUserAgentGet(nil)`
 #### Example: Load
 
 ```go
-parse_user_agent_get, err := client.ParseUserAgentGet(nil).Load(nil, nil)
+parseUserAgentGet, err := client.ParseUserAgentGet(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(parse_user_agent_get) // the loaded record
+fmt.Println(parseUserAgentGet) // the loaded record
 ```
 
 
 ### ParseUserAgentPost
 
-Create an instance: `parse_user_agent_post := client.ParseUserAgentPost(nil)`
+Create an instance: `parseUserAgentPost := client.ParseUserAgentPost(nil)`
 
 #### Operations
 
@@ -346,8 +346,12 @@ Create an instance: `parse_user_agent_post := client.ParseUserAgentPost(nil)`
 
 ```go
 result, err := client.ParseUserAgentPost(nil).Create(map[string]any{
-    "ua": /* string */,
+    "ua": "example_ua",
 }, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 

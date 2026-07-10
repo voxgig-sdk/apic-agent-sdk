@@ -324,7 +324,7 @@ Create an instance: `parse_user_agent_post = client.ParseUserAgentPost()`
 
 ```python
 parse_user_agent_post = client.ParseUserAgentPost().create({
-    "ua": "example",  # str
+    "ua": "example_ua",  # str
 })
 ```
 

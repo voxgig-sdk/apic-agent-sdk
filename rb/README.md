@@ -319,7 +319,7 @@ Create an instance: `parse_user_agent_post = client.ParseUserAgentPost`
 
 ```ruby
 parse_user_agent_post = client.ParseUserAgentPost.create({
-  "ua" => "example", # String
+  "ua" => "example_ua", # String
 })
 ```
 

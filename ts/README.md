@@ -368,7 +368,7 @@ Create an instance: `const parse_user_agent_post = client.ParseUserAgentPost()`
 
 ```ts
 const parse_user_agent_post = await client.ParseUserAgentPost().create({
-  ua: /* string */,
+  ua: 'example_ua',
 })
 ```
 

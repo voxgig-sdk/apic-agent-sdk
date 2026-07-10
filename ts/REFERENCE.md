@@ -197,7 +197,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ParseUserAgentPost().create({
-  ua: /* string */,
+  ua: 'example_ua',
 })
 ```
 

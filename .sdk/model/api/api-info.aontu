@@ -15,10 +15,10 @@ main: {
           url: "https://api.apicagent.com"
         }
       ]
+      summary: "Free REST API to detect browser, OS, device from user agent string."
       termsOfService: "https://www.apicagent.com/terms"
       title: "APIC Agent"
       version: "1.0.0"
+      website: "https://apicagent.com"
     }
   }
-}
-
