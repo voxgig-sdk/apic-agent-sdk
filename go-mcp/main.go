@@ -37,7 +37,20 @@ func main() {
 	addr := flag.String("addr", ":8080", "listen address for http transport")
 	flag.Parse()
 
-	client := sdk.NewApicAgentSDK(nil)
+	// Configure from the environment: APIC_AGENT_APIKEY carries the API key and
+	// APIC_AGENT_BASE optionally overrides the API base URL (e.g. production).
+	// Both injectable by a secrets vault. Unset -> nil config defaults.
+	var opts map[string]any
+	if apikey := os.Getenv("APIC_AGENT_APIKEY"); apikey != "" {
+		opts = map[string]any{"apikey": apikey}
+	}
+	if base := os.Getenv("APIC_AGENT_BASE"); base != "" {
+		if opts == nil {
+			opts = map[string]any{}
+		}
+		opts["base"] = base
+	}
+	client := sdk.NewApicAgentSDK(opts)
 	server := mcp.NewServer(
 		&mcp.Implementation{
 			Name:    "apic-agent",
