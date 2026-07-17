@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- ApicAgent SDK exists test
 
 local sdk = require("apic-agent_sdk")
 
