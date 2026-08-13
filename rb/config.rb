@@ -83,6 +83,7 @@ module ApicAgentConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/",
                   "parts" => [],
@@ -159,6 +160,7 @@ module ApicAgentConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "POST",
                   "orig" => "/",
                   "parts" => [],

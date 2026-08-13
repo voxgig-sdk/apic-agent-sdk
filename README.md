@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = ApicAgentSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = ApicAgentSDK.test({
+  entity: {
+    parse_user_agent_get: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const parseuseragentget = await client.ParseUserAgentGet().load()
-// parseuseragentget is a bare ParseUserAgentGet populated with mock data
+// parseuseragentget is the ParseUserAgentGet entity, populated with mock data
+// — call parseuseragentget.data() for the record itself
 console.log(parseuseragentget)
 ```
 
@@ -183,7 +192,7 @@ require_once 'apicagent_sdk.php';
 $client = new ApicAgentSDK();
 
 
-// Load a specific parseuseragentget (returns the bare record; throws on error)
+// Load a specific parseuseragentget (returns the ENTITY; call data_get() for the record; throws on error)
 $parseuseragentget = $client->ParseUserAgentGet()->load();
 print_r($parseuseragentget);
 ```
@@ -211,7 +220,7 @@ require_relative "ApicAgent_sdk"
 client = ApicAgentSDK.new
 
 
-# Load a specific parseuseragentget (returns the bare record; raises on error)
+# Load a specific parseuseragentget (returns the ENTITY; call data_get for the record)
 parseuseragentget = client.ParseUserAgentGet.load()
 puts parseuseragentget
 ```
@@ -345,6 +354,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://www.apicagent.com](https://www.apicagent.com)
 

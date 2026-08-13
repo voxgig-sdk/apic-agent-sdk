@@ -29,7 +29,7 @@ describe("ParseUserAgentGetEntity", function()
     -- The basic flow consumes synthetic IDs from the fixture. In live mode
     -- without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup.synthetic_only then
-      pending("live entity test uses synthetic IDs from fixture — set APICAGENT_TEST_PARSE_USER_AGENT_GET_ENTID JSON to run live")
+      pending("live entity test uses synthetic IDs from fixture — set APIC_AGENT_TEST_PARSE_USER_AGENT_GET_ENTID JSON to run live")
       return
     end
     local client = setup.client
@@ -84,22 +84,22 @@ function parse_user_agent_get_basic_setup(extra)
   -- Detect ENTID env override before envOverride consumes it. When live
   -- mode is on without a real override, the basic test runs against synthetic
   -- IDs from the fixture and 4xx's. Surface this so the test can skip.
-  local entid_env_raw = os.getenv("APICAGENT_TEST_PARSE_USER_AGENT_GET_ENTID")
+  local entid_env_raw = os.getenv("APIC_AGENT_TEST_PARSE_USER_AGENT_GET_ENTID")
   local idmap_overridden = entid_env_raw ~= nil and entid_env_raw:match("^%s*{") ~= nil
 
   local env = runner.env_override({
-    ["APICAGENT_TEST_PARSE_USER_AGENT_GET_ENTID"] = idmap,
-    ["APICAGENT_TEST_LIVE"] = "FALSE",
-    ["APICAGENT_TEST_EXPLAIN"] = "FALSE",
+    ["APIC_AGENT_TEST_PARSE_USER_AGENT_GET_ENTID"] = idmap,
+    ["APIC_AGENT_TEST_LIVE"] = "FALSE",
+    ["APIC_AGENT_TEST_EXPLAIN"] = "FALSE",
   })
 
   local idmap_resolved = helpers.to_map(
-    env["APICAGENT_TEST_PARSE_USER_AGENT_GET_ENTID"])
+    env["APIC_AGENT_TEST_PARSE_USER_AGENT_GET_ENTID"])
   if idmap_resolved == nil then
     idmap_resolved = helpers.to_map(idmap)
   end
 
-  if env["APICAGENT_TEST_LIVE"] == "TRUE" then
+  if env["APIC_AGENT_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
       },
@@ -108,13 +108,13 @@ function parse_user_agent_get_basic_setup(extra)
     client = sdk.new(helpers.to_map(merged_opts))
   end
 
-  local live = env["APICAGENT_TEST_LIVE"] == "TRUE"
+  local live = env["APIC_AGENT_TEST_LIVE"] == "TRUE"
   return {
     client = client,
     data = entity_data,
     idmap = idmap_resolved,
     env = env,
-    explain = env["APICAGENT_TEST_EXPLAIN"] == "TRUE",
+    explain = env["APIC_AGENT_TEST_EXPLAIN"] == "TRUE",
     live = live,
     synthetic_only = live and not idmap_overridden,
     now = os.time() * 1000,

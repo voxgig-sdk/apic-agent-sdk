@@ -26,8 +26,8 @@ import {
 describe('ParseUserAgentGetEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when APICAGENT_TEST_LIVE=TRUE.
-  afterEach(liveDelay('APICAGENT_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when APIC_AGENT_TEST_LIVE=TRUE.
+  afterEach(liveDelay('APIC_AGENT_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = ApicAgentSDK.test()
@@ -62,7 +62,7 @@ describe('ParseUserAgentGetEntity', async () => {
     // LOAD
     const parse_user_agent_get_ref01_ent = client.ParseUserAgentGet()
     const parse_user_agent_get_ref01_match_dt0: any = {}
-    const parse_user_agent_get_ref01_data_dt0 = await parse_user_agent_get_ref01_ent.load(parse_user_agent_get_ref01_match_dt0)
+    const parse_user_agent_get_ref01_data_dt0 = (await parse_user_agent_get_ref01_ent.load(parse_user_agent_get_ref01_match_dt0)).data()
     assert(null != parse_user_agent_get_ref01_data_dt0)
 
 

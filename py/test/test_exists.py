@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# ApicAgent SDK exists test
 
 import pytest
 from apicagent_sdk import ApicAgentSDK

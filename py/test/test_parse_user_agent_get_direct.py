@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from apicagent_sdk.utility.voxgig_struct import voxgig_struct as vs
 from apicagent_sdk import ApicAgentSDK
-from core import helpers
+from apicagent_sdk.core import helpers
 from test import runner
 
 
@@ -61,11 +61,11 @@ def _parse_user_agent_get_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "APICAGENT_TEST_PARSE_USER_AGENT_GET_ENTID": {},
-        "APICAGENT_TEST_LIVE": "FALSE",
+        "APIC_AGENT_TEST_PARSE_USER_AGENT_GET_ENTID": {},
+        "APIC_AGENT_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("APICAGENT_TEST_LIVE") == "TRUE"
+    live = env.get("APIC_AGENT_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

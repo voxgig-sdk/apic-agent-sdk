@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import ApicAgentControl
-from core.error import ApicAgentError
-from core.result import ApicAgentResult
-from core.spec import ApicAgentSpec
+from projectname_sdk.config import make_config
+from projectname_sdk.features import _make_feature
+from projectname_sdk.core.control import ApicAgentControl
+from projectname_sdk.core.error import ApicAgentError
+from projectname_sdk.core.result import ApicAgentResult
+from projectname_sdk.core.spec import ApicAgentSpec
 
 
 # True when this SDK was generated with the named feature.

@@ -19,11 +19,15 @@ import {
 describe('ParseUserAgentGetDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when APICAGENT_TEST_LIVE=TRUE.
-  afterEach(liveDelay('APICAGENT_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when APIC_AGENT_TEST_LIVE=TRUE.
+  afterEach(liveDelay('APIC_AGENT_TEST_LIVE'))
 
   test('direct-exists', async () => {
     const sdk = new ApicAgentSDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -76,17 +80,17 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'APICAGENT_TEST_PARSE_USER_AGENT_GET_ENTID': {},
-    'APICAGENT_TEST_LIVE': 'FALSE',
+    'APIC_AGENT_TEST_PARSE_USER_AGENT_GET_ENTID': {},
+    'APIC_AGENT_TEST_LIVE': 'FALSE',
   })
 
-  const live = 'TRUE' === env.APICAGENT_TEST_LIVE
+  const live = 'TRUE' === env.APIC_AGENT_TEST_LIVE
 
   if (live) {
     const client = new ApicAgentSDK({
     })
 
-    let idmap: any = env['APICAGENT_TEST_PARSE_USER_AGENT_GET_ENTID']
+    let idmap: any = env['APIC_AGENT_TEST_PARSE_USER_AGENT_GET_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

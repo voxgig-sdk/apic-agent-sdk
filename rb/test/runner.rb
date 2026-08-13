@@ -23,8 +23,8 @@ module ApicAgentTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("APICAGENT_TEST_LIVE")
-    override = getenv("APICAGENT_TEST_OVERRIDE")
+    live = getenv("APIC_AGENT_TEST_LIVE")
+    override = getenv("APIC_AGENT_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module ApicAgentTestRunner
       end
     end
 
-    explain = getenv("APICAGENT_TEST_EXPLAIN")
-    m["APICAGENT_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("APIC_AGENT_TEST_EXPLAIN")
+    m["APIC_AGENT_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

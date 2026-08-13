@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ ApicAgentUtility.registrar = ->(u) {
   u.prepare_params = ApicAgentUtilities::PrepareParams
   u.prepare_path = ApicAgentUtilities::PreparePath
   u.prepare_query = ApicAgentUtilities::PrepareQuery
+  u.graphql_body = ApicAgentUtilities::GraphqlBody
+  u.graphql_errors = ApicAgentUtilities::GraphqlErrors
   u.result_basic = ApicAgentUtilities::ResultBasic
   u.result_body = ApicAgentUtilities::ResultBody
   u.result_headers = ApicAgentUtilities::ResultHeaders

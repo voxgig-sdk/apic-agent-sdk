@@ -34,7 +34,7 @@ client = ApicAgentSDK.new
 
 ```ruby
 begin
-  # load returns the bare ParseUserAgentGet record (raises on error).
+  # load returns the ENTITY — call data_get for the ParseUserAgentGet record (raises on error).
   parseuseragentget = client.ParseUserAgentGet.load()
   puts parseuseragentget
 rescue => err
@@ -117,7 +117,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = ApicAgentSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 parseuseragentget = client.ParseUserAgentGet.load()
 puts parseuseragentget
 ```
@@ -289,7 +290,7 @@ Create an instance: `parse_user_agent_get = client.ParseUserAgentGet`
 #### Example: Load
 
 ```ruby
-# load returns the bare ParseUserAgentGet record (raises on error).
+# load returns the ENTITY — call data_get for the ParseUserAgentGet record (raises on error).
 parse_user_agent_get = client.ParseUserAgentGet.load()
 ```
 

@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import ApicAgentSDK
-from core.error import ApicAgentError
-from core.result import ApicAgentResult
-from core.response import ApicAgentResponse
-from core.spec import ApicAgentSpec
-from feature.base_feature import ApicAgentBaseFeature
+from projectname_sdk.core.error import ApicAgentError
+from projectname_sdk.core.result import ApicAgentResult
+from projectname_sdk.core.response import ApicAgentResponse
+from projectname_sdk.core.spec import ApicAgentSpec
+from projectname_sdk.feature.base_feature import ApicAgentBaseFeature
 
 
 def _client():

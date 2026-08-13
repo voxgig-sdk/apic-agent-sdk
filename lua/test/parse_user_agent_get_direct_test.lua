@@ -66,11 +66,11 @@ function parse_user_agent_get_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["APICAGENT_TEST_PARSE_USER_AGENT_GET_ENTID"] = {},
-    ["APICAGENT_TEST_LIVE"] = "FALSE",
+    ["APIC_AGENT_TEST_PARSE_USER_AGENT_GET_ENTID"] = {},
+    ["APIC_AGENT_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["APICAGENT_TEST_LIVE"] == "TRUE"
+  local live = env["APIC_AGENT_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
