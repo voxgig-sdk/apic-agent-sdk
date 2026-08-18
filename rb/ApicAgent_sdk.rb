@@ -28,7 +28,7 @@ class ApicAgentSDK
     utility = ApicAgentUtility.new
     @_utility = utility
 
-    config = ApicAgentConfig.make_config
+    config = ApicAgentConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

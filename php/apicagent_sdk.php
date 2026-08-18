@@ -40,7 +40,7 @@ class ApicAgentSDK
         $utility = new ApicAgentUtility();
         $this->_utility = $utility;
 
-        $config = ApicAgentConfig::make_config();
+        $config = ApicAgentConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,
