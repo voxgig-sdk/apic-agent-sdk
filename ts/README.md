@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -287,11 +287,11 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `browser_family` |  |
+| `browser_family` | Browser family name |
 | `client` |  |
 | `device` |  |
 | `os` |  |
-| `os_family` |  |
+| `os_family` | Operating system family name |
 
 Operations: load.
 
@@ -301,12 +301,12 @@ API path: `/`
 
 | Field | Description |
 | --- | --- |
-| `browser_family` |  |
+| `browser_family` | Browser family name |
 | `client` |  |
 | `device` |  |
 | `os` |  |
-| `os_family` |  |
-| `ua` |  |
+| `os_family` | Operating system family name |
+| `ua` | User agent string to be parsed |
 
 Operations: create.
 
@@ -331,11 +331,11 @@ Create an instance: `const parse_user_agent_get = client.ParseUserAgentGet()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `browser_family` | `string` |  |
+| `browser_family` | `string` | Browser family name |
 | `client` | `Record<string, any>` |  |
 | `device` | `Record<string, any>` |  |
 | `os` | `Record<string, any>` |  |
-| `os_family` | `string` |  |
+| `os_family` | `string` | Operating system family name |
 
 #### Example: Load
 
@@ -358,12 +358,12 @@ Create an instance: `const parse_user_agent_post = client.ParseUserAgentPost()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `browser_family` | `string` |  |
+| `browser_family` | `string` | Browser family name |
 | `client` | `Record<string, any>` |  |
 | `device` | `Record<string, any>` |  |
 | `os` | `Record<string, any>` |  |
-| `os_family` | `string` |  |
-| `ua` | `string` |  |
+| `os_family` | `string` | Operating system family name |
+| `ua` | `string` | User agent string to be parsed |
 
 #### Example: Create
 

@@ -102,11 +102,11 @@ fmt.Println(parseUserAgentGet.GetName()) // "parse_user_agent_get"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `browser_family` | `string` | No |  |
+| `browser_family` | `string` | No | Browser family name |
 | `client` | `map[string]any` | No |  |
 | `device` | `map[string]any` | No |  |
 | `os` | `map[string]any` | No |  |
-| `os_family` | `string` | No |  |
+| `os_family` | `string` | No | Operating system family name |
 
 ### Operations
 
@@ -157,12 +157,12 @@ fmt.Println(parseUserAgentPost.GetName()) // "parse_user_agent_post"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `browser_family` | `string` | No |  |
+| `browser_family` | `string` | No | Browser family name |
 | `client` | `map[string]any` | No |  |
 | `device` | `map[string]any` | No |  |
 | `os` | `map[string]any` | No |  |
-| `os_family` | `string` | No |  |
-| `ua` | `string` | Yes |  |
+| `os_family` | `string` | No | Operating system family name |
+| `ua` | `string` | Yes | User agent string to be parsed |
 
 ### Operations
 

@@ -8,6 +8,7 @@ main: kit: entity: parse_user_agent_get: {
     {
       name: "browser_family"
       req: false
+      short: "Browser family name"
       type: "`$STRING`"
     }
     {
@@ -28,6 +29,7 @@ main: kit: entity: parse_user_agent_get: {
     {
       name: "os_family"
       req: false
+      short: "Operating system family name"
       type: "`$STRING`"
     }
   ]

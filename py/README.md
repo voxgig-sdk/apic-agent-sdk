@@ -243,11 +243,11 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `browser_family` |  |
+| `browser_family` | Browser family name |
 | `client` |  |
 | `device` |  |
 | `os` |  |
-| `os_family` |  |
+| `os_family` | Operating system family name |
 
 Operations: Load.
 
@@ -257,12 +257,12 @@ API path: `/`
 
 | Field | Description |
 | --- | --- |
-| `browser_family` |  |
+| `browser_family` | Browser family name |
 | `client` |  |
 | `device` |  |
 | `os` |  |
-| `os_family` |  |
-| `ua` |  |
+| `os_family` | Operating system family name |
+| `ua` | User agent string to be parsed |
 
 Operations: Create.
 
@@ -287,11 +287,11 @@ Create an instance: `parse_user_agent_get = client.ParseUserAgentGet()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `browser_family` | `str` |  |
+| `browser_family` | `str` | Browser family name |
 | `client` | `dict` |  |
 | `device` | `dict` |  |
 | `os` | `dict` |  |
-| `os_family` | `str` |  |
+| `os_family` | `str` | Operating system family name |
 
 #### Example: Load
 
@@ -314,12 +314,12 @@ Create an instance: `parse_user_agent_post = client.ParseUserAgentPost()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `browser_family` | `str` |  |
+| `browser_family` | `str` | Browser family name |
 | `client` | `dict` |  |
 | `device` | `dict` |  |
 | `os` | `dict` |  |
-| `os_family` | `str` |  |
-| `ua` | `str` |  |
+| `os_family` | `str` | Operating system family name |
+| `ua` | `str` | User agent string to be parsed |
 
 #### Example: Create
 

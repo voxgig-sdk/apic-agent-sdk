@@ -227,11 +227,11 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `browser_family` |  |
+| `browser_family` | Browser family name |
 | `client` |  |
 | `device` |  |
 | `os` |  |
-| `os_family` |  |
+| `os_family` | Operating system family name |
 
 Operations: Load.
 
@@ -241,12 +241,12 @@ API path: `/`
 
 | Field | Description |
 | --- | --- |
-| `browser_family` |  |
+| `browser_family` | Browser family name |
 | `client` |  |
 | `device` |  |
 | `os` |  |
-| `os_family` |  |
-| `ua` |  |
+| `os_family` | Operating system family name |
+| `ua` | User agent string to be parsed |
 
 Operations: Create.
 
@@ -271,11 +271,11 @@ Create an instance: `local parse_user_agent_get = client:ParseUserAgentGet(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `browser_family` | `string` |  |
+| `browser_family` | `string` | Browser family name |
 | `client` | `table` |  |
 | `device` | `table` |  |
 | `os` | `table` |  |
-| `os_family` | `string` |  |
+| `os_family` | `string` | Operating system family name |
 
 #### Example: Load
 
@@ -298,12 +298,12 @@ Create an instance: `local parse_user_agent_post = client:ParseUserAgentPost(nil
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `browser_family` | `string` |  |
+| `browser_family` | `string` | Browser family name |
 | `client` | `table` |  |
 | `device` | `table` |  |
 | `os` | `table` |  |
-| `os_family` | `string` |  |
-| `ua` | `string` |  |
+| `os_family` | `string` | Operating system family name |
+| `ua` | `string` | User agent string to be parsed |
 
 #### Example: Create
 

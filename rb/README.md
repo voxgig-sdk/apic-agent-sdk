@@ -237,11 +237,11 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `browser_family` |  |
+| `browser_family` | Browser family name |
 | `client` |  |
 | `device` |  |
 | `os` |  |
-| `os_family` |  |
+| `os_family` | Operating system family name |
 
 Operations: Load.
 
@@ -251,12 +251,12 @@ API path: `/`
 
 | Field | Description |
 | --- | --- |
-| `browser_family` |  |
+| `browser_family` | Browser family name |
 | `client` |  |
 | `device` |  |
 | `os` |  |
-| `os_family` |  |
-| `ua` |  |
+| `os_family` | Operating system family name |
+| `ua` | User agent string to be parsed |
 
 Operations: Create.
 
@@ -281,11 +281,11 @@ Create an instance: `parse_user_agent_get = client.ParseUserAgentGet`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `browser_family` | `String` |  |
+| `browser_family` | `String` | Browser family name |
 | `client` | `Hash` |  |
 | `device` | `Hash` |  |
 | `os` | `Hash` |  |
-| `os_family` | `String` |  |
+| `os_family` | `String` | Operating system family name |
 
 #### Example: Load
 
@@ -309,12 +309,12 @@ Create an instance: `parse_user_agent_post = client.ParseUserAgentPost`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `browser_family` | `String` |  |
+| `browser_family` | `String` | Browser family name |
 | `client` | `Hash` |  |
 | `device` | `Hash` |  |
 | `os` | `Hash` |  |
-| `os_family` | `String` |  |
-| `ua` | `String` |  |
+| `os_family` | `String` | Operating system family name |
+| `ua` | `String` | User agent string to be parsed |
 
 #### Example: Create
 

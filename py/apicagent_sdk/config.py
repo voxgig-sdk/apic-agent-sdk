@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "ApicAgent",
+            "slug": "apic-agent",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -51,6 +54,7 @@ def make_config():
         "fields": [
           {
             "name": "browser_family",
+            "short": "Browser family name",
             "type": "`$STRING`",
           },
           {
@@ -67,6 +71,7 @@ def make_config():
           },
           {
             "name": "os_family",
+            "short": "Operating system family name",
             "type": "`$STRING`",
           },
         ],
@@ -114,6 +119,7 @@ def make_config():
         "fields": [
           {
             "name": "browser_family",
+            "short": "Browser family name",
             "type": "`$STRING`",
           },
           {
@@ -130,11 +136,13 @@ def make_config():
           },
           {
             "name": "os_family",
+            "short": "Operating system family name",
             "type": "`$STRING`",
           },
           {
             "name": "ua",
             "req": True,
+            "short": "User agent string to be parsed",
             "type": "`$STRING`",
           },
         ],

@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'ApicAgent',
+        slug: "apic-agent",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -59,6 +70,7 @@ class Config {
       "fields": [
         {
           "name": "browser_family",
+          "short": "Browser family name",
           "type": "`$STRING`"
         },
         {
@@ -75,6 +87,7 @@ class Config {
         },
         {
           "name": "os_family",
+          "short": "Operating system family name",
           "type": "`$STRING`"
         }
       ],
@@ -122,6 +135,7 @@ class Config {
       "fields": [
         {
           "name": "browser_family",
+          "short": "Browser family name",
           "type": "`$STRING`"
         },
         {
@@ -138,11 +152,13 @@ class Config {
         },
         {
           "name": "os_family",
+          "short": "Operating system family name",
           "type": "`$STRING`"
         },
         {
           "name": "ua",
           "req": true,
+          "short": "User agent string to be parsed",
           "type": "`$STRING`"
         }
       ],

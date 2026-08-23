@@ -33,6 +33,9 @@ class ApicAgentConfig
         return [
             "main" => [
                 "name" => "ApicAgent",
+                "slug" => "apic-agent",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
@@ -56,6 +59,7 @@ class ApicAgentConfig
           'fields' => [
             [
               'name' => 'browser_family',
+              'short' => 'Browser family name',
               'type' => '`$STRING`',
             ],
             [
@@ -72,6 +76,7 @@ class ApicAgentConfig
             ],
             [
               'name' => 'os_family',
+              'short' => 'Operating system family name',
               'type' => '`$STRING`',
             ],
           ],
@@ -119,6 +124,7 @@ class ApicAgentConfig
           'fields' => [
             [
               'name' => 'browser_family',
+              'short' => 'Browser family name',
               'type' => '`$STRING`',
             ],
             [
@@ -135,11 +141,13 @@ class ApicAgentConfig
             ],
             [
               'name' => 'os_family',
+              'short' => 'Operating system family name',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'ua',
               'req' => true,
+              'short' => 'User agent string to be parsed',
               'type' => '`$STRING`',
             ],
           ],

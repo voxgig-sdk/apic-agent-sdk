@@ -91,11 +91,11 @@ parse_user_agent_get = client.ParseUserAgentGet()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `browser_family` | `str` | No |  |
+| `browser_family` | `str` | No | Browser family name |
 | `client` | `dict` | No |  |
 | `device` | `dict` | No |  |
 | `os` | `dict` | No |  |
-| `os_family` | `str` | No |  |
+| `os_family` | `str` | No | Operating system family name |
 
 ### Operations
 
@@ -146,12 +146,12 @@ parse_user_agent_post = client.ParseUserAgentPost()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `browser_family` | `str` | No |  |
+| `browser_family` | `str` | No | Browser family name |
 | `client` | `dict` | No |  |
 | `device` | `dict` | No |  |
 | `os` | `dict` | No |  |
-| `os_family` | `str` | No |  |
-| `ua` | `str` | Yes |  |
+| `os_family` | `str` | No | Operating system family name |
+| `ua` | `str` | Yes | User agent string to be parsed |
 
 ### Operations
 

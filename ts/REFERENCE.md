@@ -128,11 +128,11 @@ const parse_user_agent_get = client.ParseUserAgentGet()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `browser_family` | `string` | No |  |
+| `browser_family` | `string` | No | Browser family name |
 | `client` | `Record<string, any>` | No |  |
 | `device` | `Record<string, any>` | No |  |
 | `os` | `Record<string, any>` | No |  |
-| `os_family` | `string` | No |  |
+| `os_family` | `string` | No | Operating system family name |
 
 ### Operations
 
@@ -182,12 +182,12 @@ const parse_user_agent_post = client.ParseUserAgentPost()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `browser_family` | `string` | No |  |
+| `browser_family` | `string` | No | Browser family name |
 | `client` | `Record<string, any>` | No |  |
 | `device` | `Record<string, any>` | No |  |
 | `os` | `Record<string, any>` | No |  |
-| `os_family` | `string` | No |  |
-| `ua` | `string` | Yes |  |
+| `os_family` | `string` | No | Operating system family name |
+| `ua` | `string` | Yes | User agent string to be parsed |
 
 ### Operations
 

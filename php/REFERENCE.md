@@ -96,11 +96,11 @@ $parse_user_agent_get = $client->ParseUserAgentGet();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `browser_family` | `string` | No |  |
+| `browser_family` | `string` | No | Browser family name |
 | `client` | `array` | No |  |
 | `device` | `array` | No |  |
 | `os` | `array` | No |  |
-| `os_family` | `string` | No |  |
+| `os_family` | `string` | No | Operating system family name |
 
 ### Operations
 
@@ -152,12 +152,12 @@ $parse_user_agent_post = $client->ParseUserAgentPost();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `browser_family` | `string` | No |  |
+| `browser_family` | `string` | No | Browser family name |
 | `client` | `array` | No |  |
 | `device` | `array` | No |  |
 | `os` | `array` | No |  |
-| `os_family` | `string` | No |  |
-| `ua` | `string` | Yes |  |
+| `os_family` | `string` | No | Operating system family name |
+| `ua` | `string` | Yes | User agent string to be parsed |
 
 ### Operations
 

@@ -6,7 +6,7 @@ The Golang SDK for the ApicAgent API — an entity-oriented client using standar
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.ParseUserAgentGet(nil)` — each with the same small set of operations (`Load`, `Create`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -260,11 +260,11 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"browser_family"` |  |
+| `"browser_family"` | Browser family name |
 | `"client"` |  |
 | `"device"` |  |
 | `"os"` |  |
-| `"os_family"` |  |
+| `"os_family"` | Operating system family name |
 
 Operations: Load.
 
@@ -274,12 +274,12 @@ API path: `/`
 
 | Field | Description |
 | --- | --- |
-| `"browser_family"` |  |
+| `"browser_family"` | Browser family name |
 | `"client"` |  |
 | `"device"` |  |
 | `"os"` |  |
-| `"os_family"` |  |
-| `"ua"` |  |
+| `"os_family"` | Operating system family name |
+| `"ua"` | User agent string to be parsed |
 
 Operations: Create.
 
@@ -304,11 +304,11 @@ Create an instance: `parseUserAgentGet := client.ParseUserAgentGet(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `browser_family` | `string` |  |
+| `browser_family` | `string` | Browser family name |
 | `client` | `map[string]any` |  |
 | `device` | `map[string]any` |  |
 | `os` | `map[string]any` |  |
-| `os_family` | `string` |  |
+| `os_family` | `string` | Operating system family name |
 
 #### Example: Load
 
@@ -335,12 +335,12 @@ Create an instance: `parseUserAgentPost := client.ParseUserAgentPost(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `browser_family` | `string` |  |
+| `browser_family` | `string` | Browser family name |
 | `client` | `map[string]any` |  |
 | `device` | `map[string]any` |  |
 | `os` | `map[string]any` |  |
-| `os_family` | `string` |  |
-| `ua` | `string` |  |
+| `os_family` | `string` | Operating system family name |
+| `ua` | `string` | User agent string to be parsed |
 
 #### Example: Create
 

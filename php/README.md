@@ -247,11 +247,11 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `browser_family` |  |
+| `browser_family` | Browser family name |
 | `client` |  |
 | `device` |  |
 | `os` |  |
-| `os_family` |  |
+| `os_family` | Operating system family name |
 
 Operations: Load.
 
@@ -261,12 +261,12 @@ API path: `/`
 
 | Field | Description |
 | --- | --- |
-| `browser_family` |  |
+| `browser_family` | Browser family name |
 | `client` |  |
 | `device` |  |
 | `os` |  |
-| `os_family` |  |
-| `ua` |  |
+| `os_family` | Operating system family name |
+| `ua` | User agent string to be parsed |
 
 Operations: Create.
 
@@ -291,11 +291,11 @@ Create an instance: `$parse_user_agent_get = $client->ParseUserAgentGet();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `browser_family` | `string` |  |
+| `browser_family` | `string` | Browser family name |
 | `client` | `array` |  |
 | `device` | `array` |  |
 | `os` | `array` |  |
-| `os_family` | `string` |  |
+| `os_family` | `string` | Operating system family name |
 
 #### Example: Load
 
@@ -319,12 +319,12 @@ Create an instance: `$parse_user_agent_post = $client->ParseUserAgentPost();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `browser_family` | `string` |  |
+| `browser_family` | `string` | Browser family name |
 | `client` | `array` |  |
 | `device` | `array` |  |
 | `os` | `array` |  |
-| `os_family` | `string` |  |
-| `ua` | `string` |  |
+| `os_family` | `string` | Operating system family name |
+| `ua` | `string` | User agent string to be parsed |
 
 #### Example: Create
 

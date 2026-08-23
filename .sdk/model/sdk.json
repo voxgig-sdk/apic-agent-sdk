@@ -36,6 +36,7 @@
               "active": true,
               "name": "browser_family",
               "req": false,
+              "short": "Browser family name",
               "type": "`$STRING`"
             },
             {
@@ -60,6 +61,7 @@
               "active": true,
               "name": "os_family",
               "req": false,
+              "short": "Operating system family name",
               "type": "`$STRING`"
             }
           ],
@@ -115,6 +117,7 @@
               "active": true,
               "name": "browser_family",
               "req": false,
+              "short": "Browser family name",
               "type": "`$STRING`"
             },
             {
@@ -139,12 +142,14 @@
               "active": true,
               "name": "os_family",
               "req": false,
+              "short": "Operating system family name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "ua",
               "req": true,
+              "short": "User agent string to be parsed",
               "type": "`$STRING`"
             }
           ],

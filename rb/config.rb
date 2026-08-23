@@ -19,6 +19,9 @@ module ApicAgentConfig
     {
       "main" => {
         "name" => "ApicAgent",
+        "slug" => "apic-agent",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -42,6 +45,7 @@ module ApicAgentConfig
           "fields" => [
             {
               "name" => "browser_family",
+              "short" => "Browser family name",
               "type" => "`$STRING`",
             },
             {
@@ -58,6 +62,7 @@ module ApicAgentConfig
             },
             {
               "name" => "os_family",
+              "short" => "Operating system family name",
               "type" => "`$STRING`",
             },
           ],
@@ -105,6 +110,7 @@ module ApicAgentConfig
           "fields" => [
             {
               "name" => "browser_family",
+              "short" => "Browser family name",
               "type" => "`$STRING`",
             },
             {
@@ -121,11 +127,13 @@ module ApicAgentConfig
             },
             {
               "name" => "os_family",
+              "short" => "Operating system family name",
               "type" => "`$STRING`",
             },
             {
               "name" => "ua",
               "req" => true,
+              "short" => "User agent string to be parsed",
               "type" => "`$STRING`",
             },
           ],
