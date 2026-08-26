@@ -43,7 +43,8 @@ class ParseUserAgentGetEntity extends ApicAgentEntityBase<ParseUserAgentGet> {
     const {
       makeContext,
       done,
-      error,
+      // The registry name is `makeError`; `error` is the local alias.
+      makeError: error,
       featureHook,
       makePoint,
       makeRequest,

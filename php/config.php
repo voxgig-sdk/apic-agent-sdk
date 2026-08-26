@@ -42,6 +42,7 @@ class ApicAgentConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
