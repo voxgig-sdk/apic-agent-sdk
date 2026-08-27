@@ -25,11 +25,7 @@ class ParseUserAgentGet
 /** Request payload for ParseUserAgentGet#load. */
 class ParseUserAgentGetLoadMatch
 {
-    public ?string $browser_family = null;
-    public ?array $client = null;
-    public ?array $device = null;
-    public ?array $os = null;
-    public ?string $os_family = null;
+    public string $ua;
 }
 
 /** ParseUserAgentPost entity data model. */

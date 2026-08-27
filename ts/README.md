@@ -39,7 +39,7 @@ const client = new ApicAgentSDK()
 
 ```ts
 try {
-  const parseuseragentget = await client.ParseUserAgentGet().load()
+  const parseuseragentget = await client.ParseUserAgentGet().load({ ua: 'example_ua' })
   console.log(parseuseragentget)
 } catch (err) {
   console.error('load failed:', err)
@@ -53,7 +53,7 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const parseuseragentget = await client.ParseUserAgentGet().load()
+  const parseuseragentget = await client.ParseUserAgentGet().load({ ua: "example" })
   console.log(parseuseragentget)
 } catch (err) {
   console.error('load failed:', err)
@@ -120,7 +120,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = ApicAgentSDK.test()
 
-const parseuseragentget = await client.ParseUserAgentGet().load()
+const parseuseragentget = await client.ParseUserAgentGet().load({ ua: 'example_ua' })
 // parseuseragentget is the entity, populated with mock response data
 // — call parseuseragentget.data() for the record itself
 console.log(parseuseragentget)
@@ -141,7 +141,7 @@ Entity instances remember their last match and data:
 const entity = client.ParseUserAgentGet()
 
 // First call runs the operation and stores its result
-await entity.load()
+await entity.load({ ua: 'example_ua' })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
@@ -340,7 +340,7 @@ Create an instance: `const parse_user_agent_get = client.ParseUserAgentGet()`
 #### Example: Load
 
 ```ts
-const parse_user_agent_get = await client.ParseUserAgentGet().load()
+const parse_user_agent_get = await client.ParseUserAgentGet().load({ ua: 'ua' })
 ```
 
 
@@ -372,6 +372,29 @@ const parse_user_agent_post = await client.ParseUserAgentPost().create({
   ua: 'example_ua',
 })
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -444,7 +467,7 @@ calls on the same instance can rely on this state.
 
 ```ts
 const parseuseragentget = client.ParseUserAgentGet()
-await parseuseragentget.load()
+await parseuseragentget.load({ ua: "example" })
 
 // parseuseragentget.data() now returns the parseuseragentget data from the last `load`
 // parseuseragentget.match() returns the last match criteria

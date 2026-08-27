@@ -24,12 +24,8 @@ class ParseUserAgentGet(TypedDict, total=False):
     os_family: str
 
 
-class ParseUserAgentGetLoadMatch(TypedDict, total=False):
-    browser_family: str
-    client: dict
-    device: dict
-    os: dict
-    os_family: str
+class ParseUserAgentGetLoadMatch(TypedDict):
+    ua: str
 
 
 class ParseUserAgentPostRequired(TypedDict):

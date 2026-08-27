@@ -35,26 +35,10 @@ ParseUserAgentGet = Struct.new(
 
 # Request payload for ParseUserAgentGet#load.
 #
-# @!attribute [rw] browser_family
-#   @return [String, nil]
-#
-# @!attribute [rw] client
-#   @return [Hash, nil]
-#
-# @!attribute [rw] device
-#   @return [Hash, nil]
-#
-# @!attribute [rw] os
-#   @return [Hash, nil]
-#
-# @!attribute [rw] os_family
-#   @return [String, nil]
+# @!attribute [rw] ua
+#   @return [String]
 ParseUserAgentGetLoadMatch = Struct.new(
-  :browser_family,
-  :client,
-  :device,
-  :os,
-  :os_family,
+  :ua,
   keyword_init: true
 )
 

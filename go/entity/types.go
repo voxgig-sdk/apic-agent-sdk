@@ -23,11 +23,7 @@ type ParseUserAgentGet struct {
 
 // ParseUserAgentGetLoadMatch is the typed request payload for ParseUserAgentGet.LoadTyped.
 type ParseUserAgentGetLoadMatch struct {
-	BrowserFamily *string `json:"browser_family,omitempty"`
-	Client *map[string]any `json:"client,omitempty"`
-	Device *map[string]any `json:"device,omitempty"`
-	Os *map[string]any `json:"os,omitempty"`
-	OsFamily *string `json:"os_family,omitempty"`
+	Ua string `json:"ua"`
 }
 
 // ParseUserAgentPost is the typed data model for the parse_user_agent_post entity.

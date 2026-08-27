@@ -36,7 +36,7 @@ local client = sdk.new()
 ### 3. Load a parseuseragentget
 
 ```lua
-local parseuseragentget, err = client:ParseUserAgentGet():load()
+local parseuseragentget, err = client:ParseUserAgentGet():load({ ua = "example_ua" })
 if err then error(err) end
 print(parseuseragentget)
 ```
@@ -48,7 +48,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local parseuseragentget, err = client:ParseUserAgentGet():load()
+local parseuseragentget, err = client:ParseUserAgentGet():load({ ua = "example" })
 if err then error(err) end
 ```
 
@@ -106,7 +106,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:ParseUserAgentGet():load()
+local result, err = client:ParseUserAgentGet():load({ ua = "example" })
 -- result is the returned data; err is set on failure
 ```
 
@@ -280,7 +280,7 @@ Create an instance: `local parse_user_agent_get = client:ParseUserAgentGet(nil)`
 #### Example: Load
 
 ```lua
-local parse_user_agent_get, err = client:ParseUserAgentGet():load()
+local parse_user_agent_get, err = client:ParseUserAgentGet():load({ ua = "ua" })
 ```
 
 
@@ -312,6 +312,29 @@ local parse_user_agent_post, err = client:ParseUserAgentPost():create({
   ua = "example_ua", -- string
 })
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -391,7 +414,7 @@ stores the returned data and match criteria internally.
 
 ```lua
 local parseuseragentget = client:ParseUserAgentGet()
-parseuseragentget:load()
+parseuseragentget:load({ ua = "example" })
 
 -- parseuseragentget:data_get() now returns the parseuseragentget data from the last load
 -- parseuseragentget:match_get() returns the last match criteria
