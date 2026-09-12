@@ -52,7 +52,7 @@ func TestParseUserAgentPostEntity(t *testing.T) {
 		// CREATE
 		parseUserAgentPostRef01Ent := client.ParseUserAgentPost(nil)
 		parseUserAgentPostRef01Data := core.ToMapAny(vs.GetProp(
-			vs.GetPath([]any{"new", "parse_user_agent_post"}, setup.data), "parse_user_agent_post_ref01"))
+			vs.GetPath(setup.data, []any{"new", "parse_user_agent_post"}), "parse_user_agent_post_ref01"))
 
 		parseUserAgentPostRef01DataResult, err := parseUserAgentPostRef01Ent.Create(parseUserAgentPostRef01Data, nil)
 		if err != nil {
@@ -90,7 +90,7 @@ func parse_user_agent_postBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"parse_user_agent_post01", "parse_user_agent_post02", "parse_user_agent_post03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -118,10 +118,22 @@ func parse_user_agent_postBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["APIC_AGENT_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewApicAgentSDK(core.ToMapAny(mergedOpts))
 	}
