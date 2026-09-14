@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { ApicAgentSDK } from '@voxgig-sdk/apic-agent'
+import { ApicAgentSDK } from '@voxgig-sdk/apic-agent-sdk'
 
 const client = new ApicAgentSDK()
 ```
@@ -456,7 +456,7 @@ apic-agent/
 Import the SDK from the package root:
 
 ```ts
-import { ApicAgentSDK } from '@voxgig-sdk/apic-agent'
+import { ApicAgentSDK } from '@voxgig-sdk/apic-agent-sdk'
 ```
 
 ### Entity state

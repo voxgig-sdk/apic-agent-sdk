@@ -105,7 +105,7 @@ local result, err = client:ParseUserAgentGet():load({ ua = "example" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/apic-agent` | publish pending — [install from git tag](https://github.com/voxgig-sdk/apic-agent-sdk/releases) |
+| TypeScript | `@voxgig-sdk/apic-agent-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/apic-agent-sdk/releases) |
 | Python | `voxgig-sdk-apic-agent` | publish pending — [install from git tag](https://github.com/voxgig-sdk/apic-agent-sdk/releases) |
 | PHP | `voxgig-sdk/apic-agent` | publish pending — [install from git tag](https://github.com/voxgig-sdk/apic-agent-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/apic-agent-sdk/go` | `go get github.com/voxgig-sdk/apic-agent-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:ParseUserAgentGet():load({ ua = "example" })
 ### TypeScript
 
 ```ts
-import { ApicAgentSDK } from '@voxgig-sdk/apic-agent'
+import { ApicAgentSDK } from '@voxgig-sdk/apic-agent-sdk'
 
 const client = new ApicAgentSDK()
 
