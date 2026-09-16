@@ -4,7 +4,10 @@ declare(strict_types=1);
 // ApicAgent SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class ApicAgentFeatures
@@ -14,8 +17,14 @@ class ApicAgentFeatures
         switch ($name) {
             case "base":
                 return new ApicAgentBaseFeature();
+            case "ratelimit":
+                return new ApicAgentRatelimitFeature();
+            case "retry":
+                return new ApicAgentRetryFeature();
             case "test":
                 return new ApicAgentTestFeature();
+            case "timeout":
+                return new ApicAgentTimeoutFeature();
             default:
                 return new ApicAgentBaseFeature();
         }
@@ -31,7 +40,10 @@ class ApicAgentFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;
