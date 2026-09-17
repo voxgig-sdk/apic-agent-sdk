@@ -127,12 +127,12 @@ class Config {
 
     entity: {
       
-      parse_user_agent_get: {
-      },
-
-      parse_user_agent_post: {
-      },
-
+        parse_user_agent_get: {
+        },
+  
+        parse_user_agent_post: {
+        },
+  
     }
   }
 

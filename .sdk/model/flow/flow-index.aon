@@ -1,4 +1,4 @@
 # Flows
 
-@"BasicParseUserAgentGetFlow.aon"
-@"BasicParseUserAgentPostFlow.aon"
+@"./BasicParseUserAgentGetFlow.aon"
+@"./BasicParseUserAgentPostFlow.aon"
