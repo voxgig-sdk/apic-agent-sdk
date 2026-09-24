@@ -100,25 +100,30 @@ module ApicAgentConfig
           "fields" => [
             {
               "name" => "browser_family",
-              "short" => "Browser family name",
+              "title" => "Browser Family",
               "type" => "`$STRING`",
+              "short" => "Browser family name",
             },
             {
               "name" => "client",
+              "title" => "Client",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "device",
+              "title" => "Device",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "os",
+              "title" => "Os",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "os_family",
-              "short" => "Operating system family name",
+              "title" => "Os Family",
               "type" => "`$STRING`",
+              "short" => "Operating system family name",
             },
           ],
           "name" => "parse_user_agent_get",
@@ -128,32 +133,33 @@ module ApicAgentConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "example" => "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36",
-                        "kind" => "query",
-                        "name" => "ua",
-                        "orig" => "ua",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/",
                   "segments" => [],
+                  "parts" => [],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "ua",
+                        "orig" => "ua",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true,
+                        "example" => "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "ua",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [],
                 },
               ],
             },
@@ -166,31 +172,37 @@ module ApicAgentConfig
           "fields" => [
             {
               "name" => "browser_family",
-              "short" => "Browser family name",
+              "title" => "Browser Family",
               "type" => "`$STRING`",
+              "short" => "Browser family name",
             },
             {
               "name" => "client",
+              "title" => "Client",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "device",
+              "title" => "Device",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "os",
+              "title" => "Os",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "os_family",
-              "short" => "Operating system family name",
+              "title" => "Os Family",
               "type" => "`$STRING`",
+              "short" => "Operating system family name",
             },
             {
               "name" => "ua",
+              "title" => "Ua",
+              "type" => "`$STRING`",
               "req" => true,
               "short" => "User agent string to be parsed",
-              "type" => "`$STRING`",
             },
           ],
           "name" => "parse_user_agent_post",
@@ -200,17 +212,18 @@ module ApicAgentConfig
               "name" => "create",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/",
                   "segments" => [],
-                  "select" => {},
+                  "parts" => [],
+                  "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "parts" => [],
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },

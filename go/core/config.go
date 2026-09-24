@@ -92,25 +92,30 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "browser_family",
-						"short": "Browser family name",
+						"title": "Browser Family",
 						"type": "`$STRING`",
+						"short": "Browser family name",
 					},
 					map[string]any{
 						"name": "client",
+						"title": "Client",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "device",
+						"title": "Device",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "os",
+						"title": "Os",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "os_family",
-						"short": "Operating system family name",
+						"title": "Os Family",
 						"type": "`$STRING`",
+						"short": "Operating system family name",
 					},
 				},
 				"name": "parse_user_agent_get",
@@ -120,32 +125,33 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36",
-											"kind": "query",
-											"name": "ua",
-											"orig": "ua",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/",
 								"segments": []any{},
+								"parts": []any{},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "ua",
+											"orig": "ua",
+											"type": "`$STRING`",
+											"kind": "query",
+											"reqd": true,
+											"example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"ua",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{},
 							},
 						},
 					},
@@ -158,31 +164,37 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "browser_family",
-						"short": "Browser family name",
+						"title": "Browser Family",
 						"type": "`$STRING`",
+						"short": "Browser family name",
 					},
 					map[string]any{
 						"name": "client",
+						"title": "Client",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "device",
+						"title": "Device",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "os",
+						"title": "Os",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "os_family",
-						"short": "Operating system family name",
+						"title": "Os Family",
 						"type": "`$STRING`",
+						"short": "Operating system family name",
 					},
 					map[string]any{
 						"name": "ua",
+						"title": "Ua",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "User agent string to be parsed",
-						"type": "`$STRING`",
 					},
 				},
 				"name": "parse_user_agent_post",
@@ -192,17 +204,18 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/",
 								"segments": []any{},
-								"select": map[string]any{},
+								"parts": []any{},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},

@@ -1,0 +1,83 @@
+# Entity: parse_user_agent_get
+
+main: kit: entity: parse_user_agent_get: {
+
+  alias: field: {}
+
+  fields: {
+    browser_family: {
+      h: "Browser Family"
+      n: "browser_family"
+      r: false
+      sh: "Browser family name"
+      t: "`$STRING`"
+    }
+    client: {
+      h: "Client"
+      n: "client"
+      r: false
+      t: "`$OBJECT`"
+    }
+    device: {
+      h: "Device"
+      n: "device"
+      r: false
+      t: "`$OBJECT`"
+    }
+    os: {
+      h: "Os"
+      n: "os"
+      r: false
+      t: "`$OBJECT`"
+    }
+    os_family: {
+      h: "Os Family"
+      n: "os_family"
+      r: false
+      sh: "Operating system family name"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "parse_user_agent_get"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"
+                k: "query"
+                n: "ua"
+                or: "ua"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/"
+          q: {
+            exist: [
+              "ua"
+            ]
+          }
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

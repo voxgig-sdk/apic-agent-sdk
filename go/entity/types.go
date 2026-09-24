@@ -1,7 +1,7 @@
 // Typed models for the ApicAgent SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,11 +14,6 @@ import (
 
 // ParseUserAgentGet is the typed data model for the parse_user_agent_get entity.
 type ParseUserAgentGet struct {
-	BrowserFamily *string `json:"browser_family,omitempty"`
-	Client *map[string]any `json:"client,omitempty"`
-	Device *map[string]any `json:"device,omitempty"`
-	Os *map[string]any `json:"os,omitempty"`
-	OsFamily *string `json:"os_family,omitempty"`
 }
 
 // ParseUserAgentGetLoadMatch is the typed request payload for ParseUserAgentGet.LoadTyped.
@@ -28,12 +23,6 @@ type ParseUserAgentGetLoadMatch struct {
 
 // ParseUserAgentPost is the typed data model for the parse_user_agent_post entity.
 type ParseUserAgentPost struct {
-	BrowserFamily *string `json:"browser_family,omitempty"`
-	Client *map[string]any `json:"client,omitempty"`
-	Device *map[string]any `json:"device,omitempty"`
-	Os *map[string]any `json:"os,omitempty"`
-	OsFamily *string `json:"os_family,omitempty"`
-	Ua string `json:"ua"`
 }
 
 // ParseUserAgentPostCreateData is the typed request payload for ParseUserAgentPost.CreateTyped.
